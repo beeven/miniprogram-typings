@@ -14,13 +14,13 @@
 通过 npm 安装：
 ```bash
 # 安装对应最新基础库的定义文件
-npm install miniprogram-api-typings
+npm install @dragongate/miniprogram-api-typings
 ```
 
 或者通过版本号指定一个基础库版本：
 ```bash
 # 安装对应基础库版本 2.4.1 的定义文件
-npm install miniprogram-api-typings@2.4.1
+npm install @dragongate/miniprogram-api-typings@2.4.1
 ```
 
 ## 版本
