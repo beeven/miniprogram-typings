@@ -2,6 +2,7 @@
 
 wx.getSetting({
     success: res => {
+        // $ExpectType boolean | undefined
         res.authSetting["scope.address"];
     },
 });

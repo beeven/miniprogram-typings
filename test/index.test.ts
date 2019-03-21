@@ -1,21 +1,23 @@
-// 测试扩展wxNS方法
-
+// 测试扩展wx方法
 declare namespace wx {
   interface Wx {
     /**
-     * add test method
+     * add t method
      */
-    test(): any;
+    test(): number;
   }
 }
 
-wx.test();
+// -$ExpectType number
 
-wx.test()
+wx.test();
 
 wx.authorize({
   scope: 'scope.record',
-})
-getApp().asdf;
+});
 
+// $ExpectType AppInstance<Record<string, any>> & Record<string, any>
+getApp();
+
+// $ExpectType any
 getCurrentPages()[0].data;
