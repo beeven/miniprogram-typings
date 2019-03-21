@@ -1,9 +1,13 @@
 {
     "name": "@dragongate/miniprogram-api-typings",
-    "version": "2.4.2-4",
+    "version": "2.4.2-5",
     "description": "Type definitions for APIs of Wechat Mini Program in TypeScript",
     "main": "./index.d.ts",
     "types": "./index.d.ts",
+    "files": [
+        "index.d.ts",
+        "types"
+    ],
     "scripts": {
         "test": "tsc --rootDir test",
         "prepublish": "npm run test"

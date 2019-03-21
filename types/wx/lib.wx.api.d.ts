@@ -8,7 +8,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ***************************************************************************** */
 
-declare namespace wxNS {
+declare namespace wx {
   interface AccessFailCallbackResult {
     /** 错误信息
      *
@@ -193,27 +193,27 @@ declare namespace wxNS {
   /** 用户授权设置信息，详情参考[权限](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/authorize/wx.authorize.html) */
   interface AuthSetting {
     /** 是否授权通讯地址，对应接口 [wx.chooseAddress](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/address/wx.chooseAddress.html) */
-    "scope.address": boolean;
+    "scope.address"?: boolean;
     /** 是否授权摄像头，对应[`<camera />`]((camera)) 组件 */
-    "scope.camera": boolean;
+    "scope.camera"?: boolean;
     /** 是否授权获取发票，对应接口 [wx.chooseInvoice](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/invoice/wx.chooseInvoice.html) */
-    "scope.invoice": boolean;
+    "scope.invoice"?: boolean;
     /** 是否授权发票抬头，对应接口 [wx.chooseInvoiceTitle](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/invoice/wx.chooseInvoiceTitle.html) */
-    "scope.invoiceTitle": boolean;
+    "scope.invoiceTitle"?: boolean;
     /** 是否授权录音功能，对应接口 [wx.startRecord](https://developers.weixin.qq.com/miniprogram/dev/api/media/recorder/wx.startRecord.html) */
-    "scope.record": boolean;
+    "scope.record"?: boolean;
     /** 是否授权用户信息，对应接口 [wx.getUserInfo](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/user-info/wx.getUserInfo.html) */
-    "scope.userInfo": boolean;
+    "scope.userInfo"?: boolean;
     /** 是否授权地理位置，对应接口 [wx.getLocation](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html), [wx.chooseLocation](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.chooseLocation.html) */
-    "scope.userLocation": boolean;
+    "scope.userLocation"?: boolean;
     /** 是否授权微信运动步数，对应接口 [wx.getWeRunData](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/werun/wx.getWeRunData.html) */
-    "scope.werun": boolean;
+    "scope.werun"?: boolean;
     /** 是否授权保存到相册 [wx.saveImageToPhotosAlbum](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.saveImageToPhotosAlbum.html), [wx.saveVideoToPhotosAlbum](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.saveVideoToPhotosAlbum.html) */
-    "scope.writePhotosAlbum": boolean;
+    "scope.writePhotosAlbum"?: boolean;
   }
   interface AuthorizeOption {
     /** 需要获取权限的 scope，详见 [scope 列表]((授权#scope-列表)) */
-    scope: string;
+    scope: keyof AuthSetting;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     complete?: AuthorizeCompleteCallback;
     /** 接口调用失败的回调函数 */
@@ -12753,7 +12753,7 @@ wx.writeBLECharacteristicValue({
     result: StartRecordSuccessCallbackResult,
   ) => void;
 }
-declare const wx: wxNS.Wx;
+declare const wx: wx.Wx;
 declare function /** [clearInterval(number intervalID)](clearInterval.md)
  *
  * 取消由 setInterval 设置的定时器。 */

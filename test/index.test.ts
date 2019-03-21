@@ -1,6 +1,6 @@
 // 测试扩展wxNS方法
 
-declare namespace wxNS {
+declare namespace wx {
   interface Wx {
     /**
      * add test method
@@ -11,7 +11,11 @@ declare namespace wxNS {
 
 wx.test();
 
+wx.test()
 
+wx.authorize({
+  scope: 'scope.record',
+})
 getApp().asdf;
 
 getCurrentPages()[0].data;
