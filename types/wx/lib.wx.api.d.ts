@@ -4390,7 +4390,7 @@ innerAudioContext.onError((res) => {
     /** [Array.<Object> Animation.export()](Animation.export.md)
      *
      * 导出动画队列。**export 方法每次调用后会清掉之前的动画操作。** */
-    export(): Array<Object>;
+    export(): Array<object>;
     /** [[Animation](https://developers.weixin.qq.com/miniprogram/dev/api/ui/animation/Animation.html) Animation.backgroundColor(string value)](Animation.backgroundColor.md)
      *
      * 设置背景色 */

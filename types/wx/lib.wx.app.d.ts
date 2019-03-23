@@ -240,17 +240,7 @@ declare namespace App {
   }
 
   interface GetApp {
-    <T extends IAnyObject>(opts?: IGetAppOption): AppInstance<T> & T;
-  }
-}
-
-/**
- * 扩展
- */
-declare namespace App {
-  interface GetApp {
-    <T extends IAnyObject = IAnyObject>(opts?: IGetAppOption): AppInstance<T> &
-      T;
+    <T extends IAnyObject = IAnyObject>(opts?: IGetAppOption): AppInstance<T> & T;
   }
 }
 

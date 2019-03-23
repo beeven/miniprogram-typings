@@ -179,19 +179,6 @@ declare namespace Page {
       D,
       T
     > &
-      T)[];
-  }
-}
-
-/**
- * 扩展
- */
-declare namespace Page {
-  interface GetCurrentPages {
-    <D extends IAnyObject = {}, T extends IAnyObject = {}>(): (PageInstance<
-      D,
-      T
-    > &
       Required<PageInstanceBaseProps> &
       T)[];
   }
