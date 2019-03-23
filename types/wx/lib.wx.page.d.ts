@@ -12,7 +12,8 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTH
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ***************************************************************************** */
 
-/* tslint:disable: no-unnecessary-generics */
+
+/* tslint:disable: no-unnecessary-generics jsdoc-format interface-name */
 declare namespace Page {
   interface ICustomShareContent {
     /** 转发标题。默认值：当前小程序名称 */
