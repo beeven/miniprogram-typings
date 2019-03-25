@@ -7,12 +7,12 @@
 * [x] `wxs` 类型定义 @dragongate/miniprogram-api-typings/wxs.d.ts
 * [ ] component (planning)
 
-Fixed API错误定义
+Fixed 错误定义
 * [x] wx.AuthSetting 类型错误
 
 > [English version](./README-en.md)
 
-[![](https://img.shields.io/npm/v/miniprogram-api-typings.svg?style=flat)](https://www.npmjs.com/package/miniprogram-api-typings)
+[![](https://img.shields.io/npm/v/@dragongate/miniprogram-api-typings.svg?style=flat)](https://www.npmjs.com/package/miniprogram-api-typings)
 [![](https://img.shields.io/github/license/wechat-miniprogram/api-typings.svg)](https://github.com/wechat-miniprogram/miniprogram-api-typings)
 
 微信小程序 API 的 TypeScript 类型定义文件
@@ -31,14 +31,9 @@ npm install @dragongate/miniprogram-api-typings
 npm install @dragongate/miniprogram-api-typings@2.4.1
 ```
 
-## 版本
-
-基础库版本|npm 版本|命令
--|-|-
-[v2.4.2](https://developers.weixin.qq.com/miniprogram/dev/framework/release.html#v242-20181204)|[2.4.2-2](https://www.npmjs.com/package/miniprogram-api-typings/v/2.4.2-2)|`npm install miniprogram-api-typings@2.4.2-2`
-[v2.4.1](https://developers.weixin.qq.com/miniprogram/dev/framework/release.html#v241-20181121)|[2.4.1](https://www.npmjs.com/package/miniprogram-api-typings/v/2.4.1)|`npm install miniprogram-api-typings@2.4.1`
-[v2.4.0](https://developers.weixin.qq.com/miniprogram/dev/framework/release.html#v240-20181105)|[2.4.0-1](https://www.npmjs.com/package/miniprogram-api-typings/v/2.4.0-1)|`npm install miniprogram-api-typings@2.4.0-1`
 
 ## 贡献
 
-PR Welcomed!
+> PR Welcomed!
+
+Supported by Microsoft.
