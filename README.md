@@ -28,7 +28,7 @@ npm install @dragongate/miniprogram-api-typings
 或者通过版本号指定一个基础库版本：
 ```bash
 # 安装对应基础库版本 2.4.1 的定义文件
-npm install @dragongate/miniprogram-api-typings@2.4.1
+npm install @dragongate/miniprogram-api-typings@version
 ```
 
 
