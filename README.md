@@ -1,6 +1,14 @@
 # 微信小程序定义文件-改
 
-由于微信声明文件不能扩展namespace，所以做了一些修改能扩展一些微信的方法
+扩展完善
+
+* [x] `event` 相关类型声明
+* [x] `console` 类型定义(去除dom依赖)
+* [x] `wxs` 类型定义 @dragongate/miniprogram-api-typings/wxs.d.ts
+* [ ] component (planning)
+
+Fixed API错误定义
+* [x] wx.AuthSetting 类型错误
 
 > [English version](./README-en.md)
 
@@ -33,4 +41,4 @@ npm install @dragongate/miniprogram-api-typings@2.4.1
 
 ## 贡献
 
-定义文件是随 [文档](https://developers.weixin.qq.com/miniprogram/dev/index.html) 一起自动生成的，所以所有的 PR 都将 __不会__ 被接受。如果您有 bug 反馈或建议，请提一个 issue 给我们。非常感谢！
+PR Welcomed!
