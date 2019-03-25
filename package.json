@@ -1,11 +1,12 @@
 {
     "name": "@dragongate/miniprogram-api-typings",
-    "version": "2.4.2-7",
+    "version": "2.4.2-8",
     "description": "Type definitions for APIs of Wechat Mini Program in TypeScript",
     "main": "./index.d.ts",
     "types": "./index.d.ts",
     "files": [
         "index.d.ts",
+        "wxs.d.ts",
         "types"
     ],
     "scripts": {
