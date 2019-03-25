@@ -24,3 +24,8 @@ type KVInfer<T> = { [K in keyof T]: T[K] };
 type Void<T> = T | undefined | null;
 type PartialOptional<T, K extends keyof T> = Partial<Pick<T, K>> &
   Pick<T, Exclude<keyof T, K>>;
+
+/**
+* Exclude undefined from T
+*/
+type NonUndefined<T> = T extends undefined ? never : T;
