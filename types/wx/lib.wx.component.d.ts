@@ -11,12 +11,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 declare interface PropertyOption {
   /** 属性类型 */
   type:
-    | StringConstructor
-    | NumberConstructor
-    | BooleanConstructor
-    | ObjectConstructor
-    | ArrayConstructor
-    | null;
+  | StringConstructor
+  | NumberConstructor
+  | BooleanConstructor
+  | ObjectConstructor
+  | ArrayConstructor
+  | null;
   /** 属性初始值 */
   value: any;
   /** 属性值被更改时的响应函数 */
@@ -70,15 +70,15 @@ declare interface WxComponent extends BaseComponent {
     data: object,
     /** setData引起的界面更新渲染完毕后的回调函数，最低基础库： `1.5.0` */
     callback?: (data: object) => void,
-  );
+  ): void;
   /** 检查组件是否具有 `behavior` （检查时会递归检查被直接或间接引入的所有behavior） */
   hasBehavior(behavior: object): void;
   /** 触发事件，参见组件事件 */
   triggerEvent(name: string, detail: object, options: TriggerEventOption): void;
   /** 创建一个 SelectorQuery 对象，选择器选取范围为这个组件实例内 */
-  createSelectorQuery(): SelectorQuery;
+  createSelectorQuery(): wx.SelectorQuery;
   /** 创建一个 IntersectionObserver 对象，选择器选取范围为这个组件实例内 */
-  createIntersectionObserver(): IntersectionObserver;
+  createIntersectionObserver(): wx.IntersectionObserver;
   /** 使用选择器选择组件实例节点，返回匹配到的第一个组件实例对象（会被 `wx://component-export` 影响） */
   selectComponent(selector: string): WxComponent;
   /** 使用选择器选择组件实例节点，返回匹配到的全部组件实例对象组成的数组 */
@@ -105,12 +105,12 @@ declare interface PageLifetimes {
    *
    * 页面显示/切入前台时触发。
    */
-  show?(this: WxPage): void;
+  show?(this: Page.PageInstance): void;
   /** 页面生命周期回调—监听页面隐藏
    *
    * 页面隐藏/切入后台时触发。 如 `navigateTo` 或底部 `tab` 切换到其他页面，小程序切入后台等。
    */
-  hide?(this: WxPage): void;
+  hide?(this: Page.PageInstance): void;
 }
 
 declare interface RelationOption {
