@@ -31,7 +31,7 @@ declare interface PropertyOption {
 
   type: PropertyType;
   /** 属性初始值 */
-  value: any;
+  value?: any;
   /** 属性值被更改时的响应函数 */
   observer?(
     newVal?: any,
