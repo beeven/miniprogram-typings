@@ -38,7 +38,7 @@ declare interface PropertyOption {
     oldVal?: any,
     changedPath?: Array<string | number>,
   ): void;
-  optionalTypes: PropertyType[];
+  optionalTypes?: PropertyType[];
 }
 
 declare interface TriggerEventOption {
@@ -66,12 +66,6 @@ declare interface WxComponent extends BaseComponent {
   id: string;
   /** 节点dataset */
   dataset: string;
-  /** 组件数据，**包括内部数据和属性值** */
-  data: object;
-  /** 组件数据，**包括内部数据和属性值**（与 `data` 一致） */
-  properties: {
-    [propertyName: string]: PropertyOption;
-  };
 
   /** 设置data并执行视图层渲染 */
   setData(
@@ -168,7 +162,7 @@ declare interface ComponentOptions {
 declare interface BaseComponent extends ComponentLifetimes {
   /** 组件的对外属性，是属性名到属性设置的映射表 */
   properties?: {
-    [propertyName: string]: PropertyOption;
+    [propertyName: string]: PropertyOption | PropertyType;
   };
   /** 组件的内部数据，和 `properties` 一同用于组件的模板渲染 */
   data?: object;
