@@ -8,15 +8,28 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ***************************************************************************** */
 
-declare interface PropertyOption {
-  /** 属性类型 */
-  type:
+/*! *****************************************************************************
+Copyright (c) 2018 Tencent, Inc. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+***************************************************************************** */
+
+type PropertyType =
   | StringConstructor
   | NumberConstructor
   | BooleanConstructor
   | ObjectConstructor
   | ArrayConstructor
   | null;
+
+declare interface PropertyOption {
+  /** 属性类型 */
+
+  type: PropertyType;
   /** 属性初始值 */
   value: any;
   /** 属性值被更改时的响应函数 */
@@ -25,6 +38,7 @@ declare interface PropertyOption {
     oldVal?: any,
     changedPath?: Array<string | number>,
   ): void;
+  optionalTypes: PropertyType[];
 }
 
 declare interface TriggerEventOption {
@@ -78,13 +92,20 @@ declare interface WxComponent extends BaseComponent {
   /** 创建一个 SelectorQuery 对象，选择器选取范围为这个组件实例内 */
   createSelectorQuery(): wx.SelectorQuery;
   /** 创建一个 IntersectionObserver 对象，选择器选取范围为这个组件实例内 */
-  createIntersectionObserver(): wx.IntersectionObserver;
+
+  createIntersectionObserver(
+    options: wx.CreateIntersectionObserverOption,
+  ): wx.IntersectionObserver;
   /** 使用选择器选择组件实例节点，返回匹配到的第一个组件实例对象（会被 `wx://component-export` 影响） */
   selectComponent(selector: string): WxComponent;
   /** 使用选择器选择组件实例节点，返回匹配到的全部组件实例对象组成的数组 */
   selectAllComponents(selector: string): WxComponent[];
   /** 获取这个关系所对应的所有关联节点，参见 组件间关系 */
   getRelationNodes(relationKey: string): WxComponent[];
+  /** 立刻执行 callback ，其中的多个 setData 之间不会触发界面绘制（只有某些特殊场景中需要，如用于在不同组件同时 setData 时进行界面绘制同步）*/
+  groupSetData(callback?: () => void): void;
+  /** 返回当前页面的 custom-tab-bar 的组件实例 */
+  getTabBar(): WxComponent;
 }
 
 declare interface ComponentLifetimes {
@@ -98,6 +119,8 @@ declare interface ComponentLifetimes {
   moved?(this: WxComponent): void;
   /** 组件生命周期函数，在组件实例被从页面节点树移除时执行 */
   detached?(this: WxComponent): void;
+  /** 组件生命周期函数，每当组件方法抛出错误时执行 */
+  error?(error: Error): void;
 }
 
 declare interface PageLifetimes {
@@ -111,6 +134,12 @@ declare interface PageLifetimes {
    * 页面隐藏/切入后台时触发。 如 `navigateTo` 或底部 `tab` 切换到其他页面，小程序切入后台等。
    */
   hide?(this: Page.PageInstance): void;
+
+  /** 页面生命周期回调—监听页面尺寸变化
+   *
+   * 所在页面尺寸变化时执行
+   */
+  resize?(Size?: Page.IResizeOption): void;
 }
 
 declare interface RelationOption {
@@ -143,6 +172,8 @@ declare interface BaseComponent extends ComponentLifetimes {
   };
   /** 组件的内部数据，和 `properties` 一同用于组件的模板渲染 */
   data?: object;
+  /** 组件数据字段监听器，用于监听 properties 和 data 的变化 */
+  observers?: object;
   /** object组件的方法，包括事件响应函数和任意的自定义方法，关于事件响应函数的使用，参见 [组件事件](events.md) */
   methods?: {
     [methodName: string]: (this: WxComponent) => any;

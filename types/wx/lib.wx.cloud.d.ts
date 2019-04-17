@@ -854,10 +854,6 @@ declare namespace DB {
   }
 }
 
-/**
- * Utils
- */
-
 type Optional<T> = { [K in keyof T]+?: T[K] };
 
 type OQ<
