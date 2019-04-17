@@ -4,11 +4,11 @@
 
 * [x] `event` 相关类型声明
 * [x] `console` 类型定义(去除dom依赖)
-* [x] `wxs` 类型定义 @dragongate/miniprogram-api-typings/wxs.d.ts
-* [ ] component (planning)
+* [x] `wxs` 类型定义 
 
 Fixed 错误定义
 * [x] wx.AuthSetting 类型错误
+* [x] fix components
 
 > [English version](./README-en.md)
 
@@ -36,7 +36,6 @@ npm install @dragongate/miniprogram-api-typings@version
 
 基础库版本|npm 版本|命令
 -|-|-
-
 [v2.6.5](https://developers.weixin.qq.com/miniprogram/dev/framework/release.html#v265-20190402) | [2.6.5-2](https://www.npmjs.com/package/miniprogram-api-typings/v/2.6.5-2) | `npm install miniprogram-api-typings@2.6.5-2`
 [v2.4.2](https://developers.weixin.qq.com/miniprogram/dev/framework/release.html#v242-20181204)|[2.4.2-2](https://www.npmjs.com/package/miniprogram-api-typings/v/2.4.2-2)|`npm install miniprogram-api-typings@2.4.2-2`
 [v2.4.1](https://developers.weixin.qq.com/miniprogram/dev/framework/release.html#v241-20181121)|[2.4.1](https://www.npmjs.com/package/miniprogram-api-typings/v/2.4.1)|`npm install miniprogram-api-typings@2.4.1`
