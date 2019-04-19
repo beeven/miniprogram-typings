@@ -732,7 +732,7 @@ backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb
   }
   interface ChooseMessageFileSuccessCallbackResult {
     /** 返回选择的文件的本地临时文件对象数组 */
-    tempFiles: ChooseFile;
+    tempFiles: Array<ChooseFile>;
   }
   interface ChooseVideoOption {
     /** 默认拉起的是前置或者后置摄像头。部分 Android 手机下由于系统 ROM 不支持无法生效
