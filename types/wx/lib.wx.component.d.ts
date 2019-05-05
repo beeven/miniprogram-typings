@@ -26,7 +26,7 @@ type PropertyType =
   | ArrayConstructor
   | null;
 
-declare interface PropertyOption {
+declare interface PropertyOption<TThis> {
   /** 属性类型 */
 
   type: PropertyType;
@@ -34,6 +34,7 @@ declare interface PropertyOption {
   value?: any;
   /** 属性值被更改时的响应函数 */
   observer?(
+    this: TThis,
     newVal?: any,
     oldVal?: any,
     changedPath?: Array<string | number>,
@@ -162,7 +163,7 @@ declare interface ComponentOptions {
 declare interface BaseComponent extends ComponentLifetimes {
   /** 组件的对外属性，是属性名到属性设置的映射表 */
   properties?: {
-    [propertyName: string]: PropertyOption | PropertyType;
+    [propertyName: string]: PropertyOption<WxComponent> | PropertyType;
   };
   /** 组件的内部数据，和 `properties` 一同用于组件的模板渲染 */
   data?: object;
