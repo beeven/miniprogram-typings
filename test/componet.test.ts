@@ -46,6 +46,8 @@ Component({
             this.dataset.x;
             this.data.x;
         },
-
+        onTest(e:event.Base){
+            this.triggerEvent(e.type)
+        }
     }
 })
