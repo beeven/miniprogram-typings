@@ -1,38 +1,20 @@
-type PropertyType =
-  | StringConstructor
-  | NumberConstructor
-  | BooleanConstructor
-  | ObjectConstructor
-  | ArrayConstructor
-  | null;
+type PropType<T> = { (): T } | { new(...args: any[]): T & object }
 
-export type Prop<T> = { (): T } | { new(...args: any[]): T & object }
-// export type PropValidator<TThis, TType  = PropertyType> = (PropOptions<TThis, TType> & ThisType<TThis>) | Prop<TType>;    
-// export type PropValidator<TThis, TType extends PropertyType = PropertyType> = PropOptions<TThis, TType> | Prop<TType>;
-// export interface PropOptions<TThis, TType extends PropertyType = PropertyType> {
-export interface PropOptions<TThis, TType = PropertyType> {
-
-  type?: Prop<TType>;
-  value?: TType | null | undefined;
-  observer?(
-    this: TThis,
-    newVal?: TType,
-    oldVal?: TType,
-    changedPath?: (string | number)[],
-  ): void;
-  optionalTypes?: Prop<TType>[];
-}
-// export type RecordPropsDefinition<TThis, T extends {[key:string]:PropertyType}> = {
-export type RecordPropsDefinition<TThis, TProp> = {
-  [K in keyof TProp]: (PropOptions<TThis, TProp[K]> & ThisType<TThis>) | Prop<TProp[K]>
+interface PropOptions<TValueType> {
+  type: PropType<TValueType>;
+  value?: TValueType | null;
+  observer?: (
+    newVal: TValueType,
+    oldVal: TValueType,
+    changedPath: (string | number)[],
+  ) => void;
+  optionalTypes?: PropType<TValueType>[];
 }
 
-export type PropsDefinition<TThis, TProp> = RecordPropsDefinition<TThis, TProp>;
+type RecordPropsDefinition<TProp> = {
+  [K in keyof TProp]: PropOptions<TProp[K]> | PropType<TProp[K]>
+}
 
-// type PropsDefinition<TThis, TProp> = RecordPropsDefinition<TThis, TProp>;
-
-// type InferPropTypeDef<T> = Prop<T>;
-//  extends Prop<infer BaseType> ? BaseType : T;
 
 
 declare interface WxComponent<TProp, TData, TMethod> {
@@ -45,7 +27,11 @@ declare interface WxComponent<TProp, TData, TMethod> {
    */
   dataset: Record<string, any>;
 
-  data: TData & TProp;
+  properties: Readonly<TProp>;
+  /** 
+   * 组件的内部数据，和 `properties` 一同用于组件的模板渲染 
+   */
+  data: Readonly<TData & TProp>;
 
   /** 
    * 设置data并执行视图层渲染
@@ -163,21 +149,12 @@ declare interface ComponentOptions {
 }
 
 type ThisComponent<TProp, TData, TMethod extends Record<string, Function>> = ThisType<WxComponent<TProp, TData, TMethod> & { properties: TProp, data: TData & TProp } & TMethod>
-export interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
-  // properties?: PropsDefinition<WxComponent<{ properties: TProp, data: TData & TProp } & TMethod>, TProp>,
-  // data?: TData
-  // methods?: TMethod & ThisType<{ properties: TProp, data: TData & TProp } & TMethod>,
+interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
   /**
   * 组件的对外属性，是属性名到属性设置的映射表
   */
-  properties?: PropsDefinition<{ properties: TProp, data: TData & TProp } & TMethod & WxComponent<TProp, TData, TMethod>, TProp>,
+  properties?: RecordPropsDefinition<TProp> & ThisComponent<TProp, TData, TMethod>,
 
-  // properties?: PropsDefinition<ThisComponent<TProp, TData, TMethod>, TProp>
-  // {
-  //   [K in keyof TProp]: InferPropTypeDef<TProp[K]>
-  //   // (PropOptions<TProp[K]> & ThisComponent<TProp, TData, TMethod>) | Prop<TProp[K]>
-  // }
-  // PropsDefinition<{ properties: TProp, data: TData & TProp } & TMethod & WxComponent<TProp, TData, TMethod>, TProp>,
   /** 
    * 组件的内部数据，和 `properties` 一同用于组件的模板渲染 
    */
@@ -226,12 +203,17 @@ export interface BaseComponet<TProp, TData, TMethod extends Record<string, Funct
   definitionFilter?: DefinitionFilter<ThisComponent<TProp, TData, TMethod>>;
 }
 
-
+/**
+ * 组件构造器
+ * @param options 组件构造对象
+ * @template TProp properties 类型,不设置会自动推断
+ * @template TData 数据格式类型
+ * @template TMethod 函数表类型
+ */
 declare function Component<
   TProp,
   TData = {},
-  TMethod extends Record<string, Function> = {}
+  TMethod extends Record<string, Function> = Record<string, Function>
 >(
   options: BaseComponet<TProp, TData, TMethod>
 ): void;
-
