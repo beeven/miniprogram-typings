@@ -5,10 +5,21 @@
 * [x] `event` 相关类型声明
 * [x] `console` 类型定义(去除dom依赖)
 * [x] `wxs` 类型定义 
-
+* Page
+    * [x] this.setData() 无需感叹号，强类型验证
+    * [x] this.route 无感叹号
+* Component
+    * [x] properties 完整定义支持和类型绑定
+    * [x] data 绑定 properties 数据
+    * [x] observer/observers this 绑定(支持data/properties/methods调用)
+    * [x] lifetimes/pageLifetimes/relations/methods 完整this绑定(支持data/properties/methods调用)
+    * [x] setData 强类型校验和自动提示
 Fixed 错误定义
-* [x] wx.AuthSetting 类型错误
-* [x] fix components
+* [x] fix wx.AuthSetting 类型错误
+* [x] fix chooseimage
+* [x] fix choosefile
+* [x] fix component 定义
+* [x] fix page 定义错误
 
 > [English version](./README-en.md)
 
