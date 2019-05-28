@@ -20,7 +20,7 @@
         "type": "git",
         "url": "git+https://github.com/MS-DG/api-typings.git"
     },
-    "author": "dragongate",
+    "author": "NewFuture <github@newfuture.cc>",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/wechat-miniprogram/api-typings/issues"
