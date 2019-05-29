@@ -20,6 +20,7 @@ Fixed 错误定义
 * [x] fix choosefile
 * [x] fix component 定义
 * [x] fix page 定义错误
+* [x] fix wx.OnStopCallbackResult (RecorderManager)
 
 > [English version](./README-en.md)
 

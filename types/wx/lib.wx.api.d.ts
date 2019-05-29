@@ -2730,6 +2730,14 @@ innerAudioContext.onError((res) => {
   interface OnStopCallbackResult {
     /** 录音文件的临时路径 */
     tempFilePath: string;
+    /**
+     * 录音文件大小，单位：Byte
+     */
+    fileSize: number;
+    /**
+     * 	录音总时长，单位：s
+     */
+    duration: number;
   }
   interface OnWifiConnectedCallbackResult {
     /** [WifiInfo]
