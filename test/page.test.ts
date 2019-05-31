@@ -25,6 +25,12 @@ Page({
         this.route;
         this.extend.k = this.data.o.s
     },
+    onReady() {
+        if (this.getTabBar) {
+            const tabbar = this.getTabBar<{active: number}>()
+            tabbar.setData({ active: 1 })
+        }
+    },
     tapOnBtn(){
         this.onLoad()
     },

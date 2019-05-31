@@ -17,7 +17,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 /* tslint:disable: no-unnecessary-generics jsdoc-format interface-name */
 
 /*! *****************************************************************************
-Copyright (c) 2018 Tencent, Inc. All rights reserved. 
+Copyright (c) 2018 Tencent, Inc. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -116,6 +116,9 @@ declare namespace Page {
 
     /** 到当前页面的路径，类型为`String`。最低基础库： `1.2.0` */
     route: string;
+
+    /** 返回当前页面的 custom-tab-bar 的组件实例 */
+    getTabBar?<TD = any, TM = any, TP = {}>(): WxComponent<TP, TD, TM>;
   }
 
   interface PageOptions<
@@ -146,10 +149,10 @@ declare namespace Page {
      */
     onShow?(): void;
     /** 生命周期回调—监听页面初次渲染完成
-     * 
+     *
      * 页面初次渲染完成时触发。一个页面只会调用一次，代表页面已经准备妥当，可以和视图层进行交互。
-     * 
-   
+     *
+
      * 注意：对界面内容进行设置的 API 如`wx.setNavigationBarTitle`，请在`onReady`之后进行。
     */
     onReady?(): void;

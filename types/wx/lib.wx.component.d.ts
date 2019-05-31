@@ -22,18 +22,18 @@ declare interface WxComponent<TProp, TData, TMethod> {
   is: string;
   /** 节点id */
   id: string;
-  /** 
-   * 节点dataset 
+  /**
+   * 节点dataset
    */
   dataset: Record<string, any>;
 
   properties: Readonly<TProp>;
-  /** 
-   * 组件的内部数据，和 `properties` 一同用于组件的模板渲染 
+  /**
+   * 组件的内部数据，和 `properties` 一同用于组件的模板渲染
    */
   data: Readonly<TData & TProp>;
 
-  /** 
+  /**
    * 设置data并执行视图层渲染
    */
   setData(
@@ -66,23 +66,23 @@ declare interface WxComponent<TProp, TData, TMethod> {
   /** 立刻执行 callback ，其中的多个 setData 之间不会触发界面绘制（只有某些特殊场景中需要，如用于在不同组件同时 setData 时进行界面绘制同步）*/
   groupSetData(callback?: () => void): void;
   /** 返回当前页面的 custom-tab-bar 的组件实例 */
-  getTabBar(): WxComponent<any, any, any>;
+  getTabBar?<TD = any, TM = any, TP = {}>(): WxComponent<TP, TD, TM>;
 }
 
 declare interface TriggerEventOption {
-  /** 
+  /**
    * 事件是否冒泡
    *
    * 默认值： `false`
    */
   bubbles?: boolean;
-  /** 
+  /**
    * 事件是否可以穿越组件边界，为false时，事件将只能在引用组件的节点树上触发，不进入其他任何组件内部
    *
    * 默认值： `false`
    */
   composed?: boolean;
-  /** 
+  /**
    * 事件是否拥有捕获阶段
    *
    * 默认值： `false`
@@ -155,34 +155,34 @@ interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
   */
   properties?: RecordPropsDefinition<TProp> & ThisComponent<TProp, TData, TMethod>,
 
-  /** 
-   * 组件的内部数据，和 `properties` 一同用于组件的模板渲染 
+  /**
+   * 组件的内部数据，和 `properties` 一同用于组件的模板渲染
    */
   data?: TData
-  /** 
-   * 组件数据字段监听器，用于监听 properties 和 data 的变化 
+  /**
+   * 组件数据字段监听器，用于监听 properties 和 data 的变化
    */
   observers?: Record<string, Function> & ThisComponent<TProp, TData, TMethod>;
-  /** 
-   * object组件的方法，包括事件响应函数和任意的自定义方法，关于事件响应函数的使用，参见 [组件事件](events.md) 
+  /**
+   * object组件的方法，包括事件响应函数和任意的自定义方法，关于事件响应函数的使用，参见 [组件事件](events.md)
    */
   methods?: TMethod & ThisComponent<TProp, TData, TMethod>,
-  /** 
+  /**
    * 组件间关系定义，参见 [组件间关系](relations.md)
    */
   relations?: {
     [componentName: string]: RelationOption & ThisComponent<TProp, TData, TMethod>;
   };
 
-  /** 
+  /**
    * 组件接受的外部样式类，参见 [外部样式类](wxml-wxss.md)
    */
   externalClasses?: string[];
-  /** 
-   * 一些选项（文档中介绍相关特性时会涉及具体的选项设置，这里暂不列举） 
+  /**
+   * 一些选项（文档中介绍相关特性时会涉及具体的选项设置，这里暂不列举）
    */
   options?: ComponentOptions;
-  /** 
+  /**
    * 组件生命周期声明对象，组件的生命周期：`created`、`attached`、`ready`、`moved`、`detached` 将收归到 `lifetimes` 字段内进行声明，原有声明方式仍旧有效，如同时存在两种声明方式，则 `lifetimes` 字段内声明方式优先级最高
    *
    * 最低基础库： `2.2.3`
@@ -190,15 +190,15 @@ interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
   lifetimes?: ComponentLifetimes & ThisComponent<TProp, TData, TMethod>;
   /** 组件所在页面的生命周期声明对象，目前仅支持页面的 `show` 和 `hide` 两个生命周期
    *
-   * 最低基础库： `2.2.3` 
+   * 最低基础库： `2.2.3`
    */
   pageLifetimes?: PageLifetimes & ThisComponent<TProp, TData, TMethod>;
 
   behaviors?: string[],
-  /** 
+  /**
    * 定义段过滤器，用于自定义组件扩展，参见 [自定义组件扩展](extend.md)
    *
-   * 最低基础库： `2.2.3` 
+   * 最低基础库： `2.2.3`
    */
   definitionFilter?: DefinitionFilter<ThisComponent<TProp, TData, TMethod>>;
 }
