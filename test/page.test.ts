@@ -27,8 +27,8 @@ Page({
     },
     onReady() {
         if (this.getTabBar) {
-            const tabbar = this.getTabBar()
-            tabbar.setData({active: 1})
+            const tabbar = this.getTabBar<{active: number}>()
+            tabbar.setData({ active: 1 })
         }
     },
     tapOnBtn(){

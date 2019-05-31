@@ -8,12 +8,14 @@
 * Page
     * [x] this.setData() 无需感叹号，强类型验证
     * [x] this.route 无感叹号
+    * [x] 补充 this.getTabBar() 支持 (含类型安全检查、泛型参数)
 * Component
     * [x] properties 完整定义支持和类型绑定
     * [x] data 绑定 properties 数据
     * [x] observer/observers this 绑定(支持data/properties/methods调用)
     * [x] lifetimes/pageLifetimes/relations/methods 完整this绑定(支持data/properties/methods调用)
     * [x] setData 强类型校验和自动提示
+    * [x] this.getTabBar() 支持类型安全检查、泛型参数
 Fixed 错误定义
 * [x] fix wx.AuthSetting 类型错误
 * [x] fix chooseimage

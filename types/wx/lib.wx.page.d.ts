@@ -118,7 +118,7 @@ declare namespace Page {
     route: string;
 
     /** 返回当前页面的 custom-tab-bar 的组件实例 */
-    getTabBar?(): WxComponent<any, any, any>
+    getTabBar?<TD = any, TM = any, TP = {}>(): WxComponent<TP, TD, TM>;
   }
 
   interface PageOptions<
