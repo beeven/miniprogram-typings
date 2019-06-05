@@ -148,12 +148,12 @@ declare interface ComponentOptions {
   addGlobalClass?: boolean;
 }
 
-type ThisComponent<TProp, TData, TMethod extends Record<string, Function>> = ThisType<WxComponent<TProp, TData, TMethod> & { properties: TProp, data: TData & TProp } & TMethod>
-interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
+type ThisComponent<TProp, TData, TMethod extends Record<string, Function>, TExt> = ThisType<WxComponent<TProp, TData, TMethod> & { properties: TProp, data: TData & TProp } & TMethod & TExt>
+interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>, TExt = {}> {
   /**
   * 组件的对外属性，是属性名到属性设置的映射表
   */
-  properties?: RecordPropsDefinition<TProp> & ThisComponent<TProp, TData, TMethod>,
+  properties?: RecordPropsDefinition<TProp> & ThisComponent<TProp, TData, TMethod, TExt>,
 
   /**
    * 组件的内部数据，和 `properties` 一同用于组件的模板渲染
@@ -162,16 +162,16 @@ interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
   /**
    * 组件数据字段监听器，用于监听 properties 和 data 的变化
    */
-  observers?: Record<string, Function> & ThisComponent<TProp, TData, TMethod>;
+  observers?: Record<string, Function> & ThisComponent<TProp, TData, TMethod, TExt>;
   /**
    * object组件的方法，包括事件响应函数和任意的自定义方法，关于事件响应函数的使用，参见 [组件事件](events.md)
    */
-  methods?: TMethod & ThisComponent<TProp, TData, TMethod>,
+  methods?: TMethod & ThisComponent<TProp, TData, TMethod, TExt>,
   /**
    * 组件间关系定义，参见 [组件间关系](relations.md)
    */
   relations?: {
-    [componentName: string]: RelationOption & ThisComponent<TProp, TData, TMethod>;
+    [componentName: string]: RelationOption & ThisComponent<TProp, TData, TMethod, TExt>;
   };
 
   /**
@@ -187,12 +187,12 @@ interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
    *
    * 最低基础库： `2.2.3`
    */
-  lifetimes?: ComponentLifetimes & ThisComponent<TProp, TData, TMethod>;
+  lifetimes?: ComponentLifetimes & ThisComponent<TProp, TData, TMethod, TExt>;
   /** 组件所在页面的生命周期声明对象，目前仅支持页面的 `show` 和 `hide` 两个生命周期
    *
    * 最低基础库： `2.2.3`
    */
-  pageLifetimes?: PageLifetimes & ThisComponent<TProp, TData, TMethod>;
+  pageLifetimes?: PageLifetimes & ThisComponent<TProp, TData, TMethod, TExt>;
 
   behaviors?: string[],
   /**
@@ -200,7 +200,7 @@ interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
    *
    * 最低基础库： `2.2.3`
    */
-  definitionFilter?: DefinitionFilter<ThisComponent<TProp, TData, TMethod>>;
+  definitionFilter?: DefinitionFilter<ThisComponent<TProp, TData, TMethod, TExt>>;
 }
 
 /**
@@ -213,7 +213,8 @@ interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>> {
 declare function Component<
   TProp,
   TData = {},
-  TMethod extends Record<string, Function> = Record<string, Function>
+  TMethod extends Record<string, Function> = Record<string, Function>,
+  TExt = {}
 >(
-  options: BaseComponet<TProp, TData, TMethod>
+  options: TExt & BaseComponet<TProp, TData, TMethod, Partial<TExt>>
 ): void;
