@@ -51,3 +51,17 @@ Component({
         }
     }
 })
+
+Component({
+    ext:0,
+    lifetimes:{
+        ready(){
+            this.ext=1
+        }
+    },
+    methods:{
+        t(){
+            const a=this.ext;
+        }
+    }
+})
