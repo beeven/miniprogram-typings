@@ -5310,6 +5310,18 @@ wx.chooseImage({
 ```
 * ![] */
     drawImage(
+      imageResource: string,
+      sx: number,
+      sy: number
+    ): void;
+    drawImage(
+      imageResource: string,
+      sx: number,
+      sy: number,
+      sWidth: number,
+      sHeight: number,
+    ): void;
+    drawImage(
       /** 所要绘制的图片资源 */
       imageResource: string,
       /** 源图像的矩形选择框的左上角 x 坐标 */
