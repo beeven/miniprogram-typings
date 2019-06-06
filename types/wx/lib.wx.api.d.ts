@@ -2735,7 +2735,7 @@ innerAudioContext.onError((res) => {
      */
     fileSize: number;
     /**
-     * 	录音总时长，单位：s
+     * 	录音总时长，单位：ms
      */
     duration: number;
   }
