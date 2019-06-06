@@ -983,7 +983,8 @@ backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb
    * | Yellow               | #FFFF00 |
    * | YellowGreen          | #9ACD32 | */
   type Color =
-    |'AliceBlue'
+    | string
+    | 'AliceBlue'
     | 'AntiqueWhite'
     | 'Aqua'
     | 'Aquamarine'
@@ -5674,7 +5675,7 @@ ctx.draw()
       /** [Color]
        *
        * 填充的颜色，默认颜色为 black。 */
-      color: Color,
+      color: Color | wx.CanvasGradient,
     ): void;
     /** [CanvasContext.setFontSize(number fontSize)](CanvasContext.setFontSize.md)
 * 
