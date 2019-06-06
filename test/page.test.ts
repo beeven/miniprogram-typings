@@ -26,8 +26,8 @@ Page({
         this.extend.k = this.data.o.s
     },
     onReady() {
-        if (this.getTabBar) {
-            const tabbar = this.getTabBar<{active: number}>()
+        const tabbar = this.getTabBar<{active: number}>()
+        if (tabbar) {
             tabbar.setData({ active: 1 })
         }
     },
