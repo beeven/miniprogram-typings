@@ -23,6 +23,9 @@ Fixed 错误定义
 * [x] fix component 定义
 * [x] fix page 定义错误
 * [x] fix wx.OnStopCallbackResult (RecorderManager)
+* [x] fix wx.Color 定义错误
+* [x] fix 支持 canvasContext.setFillStyle() 传入 wx.CanvasGradient 类型
+* [x] fix canvasContext.drawImage() 可选 3/5/9 个参数
 
 > [English version](./README-en.md)
 
