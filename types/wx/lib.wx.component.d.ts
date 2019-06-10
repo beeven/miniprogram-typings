@@ -65,7 +65,9 @@ declare interface WxComponent<TProp, TData, TMethod> {
   getRelationNodes(relationKey: string): WxComponent<any, any, any>[];
   /** 立刻执行 callback ，其中的多个 setData 之间不会触发界面绘制（只有某些特殊场景中需要，如用于在不同组件同时 setData 时进行界面绘制同步）*/
   groupSetData(callback?: () => void): void;
-  /** 返回当前页面的 custom-tab-bar 的组件实例 */
+  /** 返回当前页面的 custom-tab-bar 的组件实例
+   *
+   * 注意: 在基础库 < 2.5.0 时该方法可能会不存在, 需要先判断 getTabBar 方法是否存在 */
   getTabBar<TD = any, TM = any, TP = {}>(): WxComponent<TP, TD, TM> | null;
 }
 

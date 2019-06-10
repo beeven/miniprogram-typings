@@ -117,7 +117,9 @@ declare namespace Page {
     /** 到当前页面的路径，类型为`String`。最低基础库： `1.2.0` */
     route: string;
 
-    /** 返回当前页面的 custom-tab-bar 的组件实例 */
+  /** 返回当前页面的 custom-tab-bar 的组件实例
+   *
+   * 注意: 在基础库 < 2.5.0 时该方法可能会不存在, 需要先判断 getTabBar 方法是否存在 */
     getTabBar<TD = any, TM = any, TP = {}>(): WxComponent<TP, TD, TM> | null;
   }
 
