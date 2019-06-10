@@ -822,6 +822,8 @@ backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb
     /** 接口调用成功的回调函数 */
     success?: CloseSocketSuccessCallback;
   }
+  /** 16进制颜色 或 `rgba(0, 0, 0, 0.1)` */
+  type HexColor = string & { hexish?: any }
   /** 颜色。可以用以下几种方式来表示 canvas 中使用的颜色：
    *
    * - RGB 颜色： 如 `'rgb(255, 0, 0)'`
@@ -983,7 +985,7 @@ backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb
    * | Yellow               | #FFFF00 |
    * | YellowGreen          | #9ACD32 | */
   type Color =
-    | string
+    | HexColor
     | 'AliceBlue'
     | 'AntiqueWhite'
     | 'Aqua'
@@ -5991,7 +5993,7 @@ ctx.draw()
       /** [Color]
        *
        * 描边的颜色，默认颜色为 black。 */
-      color: Color,
+      color: Color | wx.CanvasGradient,
     ): void;
     /** [CanvasContext.setTextAlign(string align)](CanvasContext.setTextAlign.md)
 * 
@@ -6318,7 +6320,7 @@ ctx.draw()
       /** [Color]
        *
        * 渐变点的颜色。 */
-      color: Color,
+      color: Color
     ): void;
   }
   interface Console {
