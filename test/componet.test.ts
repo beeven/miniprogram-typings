@@ -41,6 +41,8 @@ Component({
     methods: {
         KKKK() {
             this.mmm()
+            const tabbar = this.getTabBar()
+            tabbar && tabbar.setData({ active: 1 })
         },
         mmm() {
             this.dataset.x;
