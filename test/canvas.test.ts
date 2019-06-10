@@ -5,6 +5,7 @@ Page({
     const canvasWidth = 420
     const ctx = wx.createCanvasContext('share-canvas')
     ctx.setFontSize(20)
+    ctx.setFillStyle('AliceBlue')
     ctx.setFillStyle('rgb(179,179,179)')
     ctx.fillText('test', 0, 20, canvasWidth)
     ctx.drawImage('img', 0, 50, canvasWidth, 210)
