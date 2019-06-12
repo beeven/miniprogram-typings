@@ -6843,7 +6843,7 @@ Page({
     relativeToViewport(
       /** 用来扩展（或收缩）参照节点布局区域的边界 */
       margins?: RelativeToViewportMargins,
-    ): void;
+    ): IntersectionObserver;
   }
   interface LivePlayerContext {
     /** [LivePlayerContext.exitFullScreen(Object object)](LivePlayerContext.exitFullScreen.md)
