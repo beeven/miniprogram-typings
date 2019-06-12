@@ -13223,3 +13223,8 @@ declare function /** [number setTimeout(function callback, number delay, any res
     /** param1, param2, ..., paramN 等附加参数，它们会作为参数传递给回调函数。 */
     rest?: any,
 ): number;
+
+/**
+ * 导入插件
+ */
+declare function requirePlugin<T=any>(packageName:string):T;

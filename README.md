@@ -5,6 +5,7 @@
 * [x] `event` 相关类型声明
 * [x] `console` 类型定义(去除dom依赖)
 * [x] `wxs` 类型定义 
+* [x] `requirePlugin`
 * Page
     * [x] this.setData() 无需感叹号，强类型验证
     * [x] this.route 无感叹号
@@ -26,6 +27,7 @@ Fixed 错误定义
 * [x] fix wx.Color 定义错误
 * [x] fix 支持 canvasContext.setFillStyle() 传入 wx.CanvasGradient 类型
 * [x] fix canvasContext.drawImage() 可选 3/5/9 个参数
+* [x] fix relativeToViewport()
 
 > [English version](./README-en.md)
 
