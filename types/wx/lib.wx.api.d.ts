@@ -13210,7 +13210,7 @@ declare function /** [number setInterval(function callback, number delay, any re
     /** 执行回调函数之间的时间间隔，单位 ms。 */
     delay?: number,
     /** param1, param2, ..., paramN 等附加参数，它们会作为参数传递给回调函数。 */
-    rest?: any,
+    ...rest: any[],
 ): number;
 declare function /** [number setTimeout(function callback, number delay, any rest)](setTimeout.md)
  *
@@ -13221,7 +13221,7 @@ declare function /** [number setTimeout(function callback, number delay, any res
     /** 延迟的时间，函数的调用会在该延迟之后发生，单位 ms。 */
     delay?: number,
     /** param1, param2, ..., paramN 等附加参数，它们会作为参数传递给回调函数。 */
-    rest?: any,
+    ...rest: any[],
 ): number;
 
 /**
