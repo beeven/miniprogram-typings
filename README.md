@@ -29,6 +29,7 @@ Fixed 错误定义
 * [x] fix canvasContext.drawImage() 可选 3/5/9 个参数
 * [x] fix relativeToViewport()
 * [x] fix setTimeout/setInterval rest 参数
+* [x] fix innerAudio onerror/offerror callback
 
 > [English version](./README-en.md)
 

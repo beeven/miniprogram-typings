@@ -2276,7 +2276,7 @@ innerAudioContext.onError((res) => {
      * 最低基础库： `1.9.90` */
     volume: number;
   }
-  interface InnerAudioContextOnErrorCallbackResult {
+  interface InnerAudioContextOnErrorCallbackResult extends GeneralCallbackResult {
     /**
      *
      * 可选值：
@@ -12187,7 +12187,7 @@ wx.writeBLECharacteristicValue({
   /** 音频自然播放至结束的事件的回调函数 */
   type OffEndedCallback = (res: GeneralCallbackResult) => void;
   /** 音频播放错误事件的回调函数 */
-  type OffErrorCallback = (res: GeneralCallbackResult) => void;
+  type OffErrorCallback = InnerAudioContextOnErrorCallback;
   /** mDNS 服务停止搜索的事件的回调函数 */
   type OffLocalServiceDiscoveryStopCallback = (
     res: GeneralCallbackResult,
