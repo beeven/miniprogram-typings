@@ -5312,16 +5312,24 @@ wx.chooseImage({
 ```
 * ![] */
     drawImage(
+      /** 所要绘制的图片资源 */
       imageResource: string,
-      sx: number,
-      sy: number
+      /** 图像的左上角在目标 canvas 上 x 轴的位置 */
+      dx: number,
+      /** 图像的左上角在目标 canvas 上 y 轴的位置 */
+      dy: number
     ): void;
     drawImage(
+      /** 所要绘制的图片资源 */
       imageResource: string,
-      sx: number,
-      sy: number,
-      sWidth: number,
-      sHeight: number,
+      /** 图像的左上角在目标 canvas 上 x 轴的位置 */
+      dx: number,
+      /** 图像的左上角在目标 canvas 上 y 轴的位置 */
+      dy: number,
+      /** 在目标画布上绘制图像的宽度，允许对绘制的图像进行缩放 */
+      dWidth: number,
+      /** 在目标画布上绘制图像的高度，允许对绘制的图像进行缩放 */
+      dHeight: number,
     ): void;
     drawImage(
       /** 所要绘制的图片资源 */
