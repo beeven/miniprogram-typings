@@ -40,7 +40,7 @@ Page({
     data: {
         n: 1
     },
-    onLoad(op: Page.OnLoadQuery) {
+    onLoad(op: Record<string, string>) {
         this.setData({
             n: +(op['n'] || 0),
         })
@@ -49,18 +49,22 @@ Page({
 
 
 
-Page<{},{backdata:{},f():void}>({
+Page<{}, { backdata: {}, f(): void }>({
     onLoad(e) {
         e['x']
     },
-    backdata:{},
-    f(){
+    backdata: {},
+    f() {
 
     },
 })
-
 Page({
-    onLoad(e:{x:string}){
+    onLoad(e: { x?: string, www: string }) {
+        e.www
+    }
+})
+Page({
+    onLoad(e: Record<'x' | 'y', string>) {
         this.setData(e);
     },
     f() {
@@ -71,7 +75,7 @@ Page({
         e.from
         return {}
     },
-    onResize(e){
+    onResize(e) {
         this.f()
         e.size.windowHeight
     }

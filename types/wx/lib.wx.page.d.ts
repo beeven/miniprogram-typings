@@ -126,12 +126,11 @@ declare namespace Page {
   /**
    * 默认Onload参数类型
    */
-  type OnLoadQuery = Record<string, string | undefined>;
+  type OnLoadQuery = { [queryKey: string]: string | undefined };
 
   interface PageOptions<
-    D extends IAnyObject = IAnyObject,
+    D extends IAnyObject = any,
     // T extends IAnyObject = any
-    TOnLoadQuery extends OnLoadQuery = OnLoadQuery
     > {
     /** 页面的初始数据
       *
@@ -146,12 +145,11 @@ declare namespace Page {
     /** 生命周期回调—监听页面加载
      *
      * 页面加载时触发。一个页面只会调用一次，可以在 onLoad 的参数中获取打开当前页面路径中的参数。
-     * @listens Page.onLoad
      */
-    onLoad?: (
+    onLoad?(
       /** 打开当前页面路径中的参数 */
-      query: TOnLoadQuery
-    ) => void;
+      query: OnLoadQuery
+    ): void;
     /** 生命周期回调—监听页面显示
      *
      * 页面显示/切入前台时触发。
@@ -225,8 +223,8 @@ declare namespace Page {
   }
 
   interface PageConstructor {
-    <D extends IAnyObject = IAnyObject, T extends IAnyObject = IAnyObject, TOnLoadQuery extends OnLoadQuery = OnLoadQuery>(
-      options: PageOptions<D, TOnLoadQuery> & T & ThisType<PageInstance<D> & T>
+    <D extends IAnyObject, T extends IAnyObject>(
+      options: PageOptions<D> & T & ThisType<PageInstance<D> & T>
     ): void;
   }
 
