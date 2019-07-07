@@ -117,15 +117,21 @@ declare namespace Page {
     /** 到当前页面的路径，类型为`String`。最低基础库： `1.2.0` */
     route: string;
 
-  /** 返回当前页面的 custom-tab-bar 的组件实例
-   *
-   * 注意: 在基础库 < 2.5.0 时该方法可能会不存在, 需要先判断 getTabBar 方法是否存在 */
+    /** 返回当前页面的 custom-tab-bar 的组件实例
+     *
+     * 注意: 在基础库 < 2.5.0 时该方法可能会不存在, 需要先判断 getTabBar 方法是否存在 */
     getTabBar<TD = any, TM = any, TP = {}>(): WxComponent<TP, TD, TM> | null;
   }
 
+  /**
+   * 默认Onload参数类型
+   */
+  type OnLoadQuery = Record<string, string | undefined>;
+
   interface PageOptions<
-    D extends IAnyObject = any,
+    D extends IAnyObject = IAnyObject,
     // T extends IAnyObject = any
+    TOnLoadQuery extends OnLoadQuery = OnLoadQuery
     > {
     /** 页面的初始数据
       *
@@ -140,11 +146,12 @@ declare namespace Page {
     /** 生命周期回调—监听页面加载
      *
      * 页面加载时触发。一个页面只会调用一次，可以在 onLoad 的参数中获取打开当前页面路径中的参数。
+     * @listens Page.onLoad
      */
-    onLoad?(
+    onLoad?: (
       /** 打开当前页面路径中的参数 */
-      query?: { [queryKey: string]: string }
-    ): void;
+      query: TOnLoadQuery
+    ) => void;
     /** 生命周期回调—监听页面显示
      *
      * 页面显示/切入前台时触发。
@@ -193,7 +200,7 @@ declare namespace Page {
      */
     onShareAppMessage?(
       /** 分享发起来源参数 */
-      options?: IShareAppMessageOption
+      options: IShareAppMessageOption
     ): ICustomShareContent;
     /** 页面滚动触发事件的处理函数
      *
@@ -201,25 +208,25 @@ declare namespace Page {
      */
     onPageScroll?(
       /** 页面滚动参数 */
-      options?: IPageScrollOption
+      options: IPageScrollOption
     ): void;
 
     /** 当前是 tab 页时，点击 tab 时触发，最低基础库： `1.9.0` */
     onTabItemTap?(
       /** tab 点击参数 */
-      options?: ITabItemTapOption
+      options: ITabItemTapOption
     ): void;
 
     /** 窗口尺寸改变时触发，最低基础库：`2.4.0` */
     onResize?(
       /** 窗口尺寸参数 */
-      options?: IResizeOption,
+      options: IResizeOption,
     ): void;
   }
 
   interface PageConstructor {
-    <D extends IAnyObject, T extends IAnyObject & PageOptions>(
-      options: PageOptions<D> & T & ThisType<PageInstance<D> & T>
+    <D extends IAnyObject = IAnyObject, T extends IAnyObject = IAnyObject, TOnLoadQuery extends OnLoadQuery = OnLoadQuery>(
+      options: PageOptions<D, TOnLoadQuery> & T & ThisType<PageInstance<D> & T>
     ): void;
   }
 

@@ -14,7 +14,7 @@ Page({
         this.route
         this.tapOnBtn()
     },
-    onHide(){
+    onHide() {
 
     },
     onShow() {
@@ -26,12 +26,54 @@ Page({
         this.extend.k = this.data.o.s
     },
     onReady() {
-        const tabbar = this.getTabBar<{active: number}>()
+        const tabbar = this.getTabBar<{ active: number }>()
         if (tabbar) {
             tabbar.setData({ active: 1 })
         }
     },
-    tapOnBtn(){
+    tapOnBtn() {
         this.onLoad()
     },
 })
+
+Page({
+    data: {
+        n: 1
+    },
+    onLoad(op: Page.OnLoadQuery) {
+        this.setData({
+            n: +(op['n'] || 0),
+        })
+    }
+})
+
+
+
+Page<{},{backdata:{},f():void}>({
+    onLoad(e) {
+        e['x']
+    },
+    backdata:{},
+    f(){
+
+    },
+})
+
+Page({
+    onLoad(e:{x:string}){
+        this.setData(e);
+    },
+    f() {
+    },
+    onPageScroll() {
+    },
+    onShareAppMessage(e) {
+        e.from
+        return {}
+    },
+    onResize(e){
+        this.f()
+        e.size.windowHeight
+    }
+})
+Page({})
