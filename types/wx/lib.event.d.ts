@@ -6,15 +6,15 @@ declare namespace event {
         /**
          * 事件组件的id
          */
-        id: string
+        id: string;
         /**
          * 当前组件的类型
          */
-        tagName: string
+        tagName: string;
         /**
          * 事件组件上由data-开头的自定义属性组成的集合
          */
-        dataset: Record<string, any>
+        dataset: Record<string, any>;
     }
 
     /**
@@ -24,19 +24,19 @@ declare namespace event {
         /**
          * 事件类型
          */
-        type: string
+        type: string;
         /**
          * 页面打开到触发事件所经过的毫秒数
          */
-        timeStamp: number
+        timeStamp: number;
         /**
          * 触发事件的源组件
          */
-        target: Target
+        target: Target;
         /**
          * 事件绑定的当前组件
          */
-        currentTarget: Target
+        currentTarget: Target;
     }
 
     /**
@@ -46,7 +46,7 @@ declare namespace event {
         /**
          * 额外的信息
          */
-        detail: P
+        detail: P;
     }
 
     /**
@@ -56,23 +56,23 @@ declare namespace event {
         /**
          * 距离页面可显示区域（屏幕除去导航条）左上角距离，横向为X轴
          */
-        clientX: number
+        clientX: number;
         /**
          * 距离页面可显示区域（屏幕除去导航条）左上角距离，纵向为Y轴
          */
-        clientY: number
+        clientY: number;
         /**
          * 触摸点的标识符
          */
-        identifier: number
+        identifier: number;
         /**
          * 距离文档左上角的距离，文档的左上角为原点，横向为X轴
          */
-        pageX: number
+        pageX: number;
         /**
          * 距离文档左上角的距离，文档的左上角为原点，纵向为Y轴
          */
-        pageY: number
+        pageY: number;
     }
 
     /**
@@ -85,11 +85,11 @@ declare namespace event {
         /**
          * 触摸事件，当前停留在屏幕中的触摸点信息的数组
          */
-        touches: T[]
+        touches: T[];
         /**
          * 触摸事件，当前变化的触摸点信息的数组
          */
-        changedTouches: T[]
+        changedTouches: T[];
     }
 
     /**
@@ -99,15 +99,15 @@ declare namespace event {
         /**
          * 触摸点的标识符
          */
-        identifier: number
+        identifier: number;
         /**
          * 距离 Canvas 左上角的距离，Canvas 的左上角为原点 ，横向为X轴
          */
-        x: number
+        x: number;
         /**
          * 距离 Canvas 左上角的距离，Canvas 的左上角为原点 纵向为Y轴
          */
-        y: number
+        y: number;
     }
 
     /**
@@ -117,7 +117,7 @@ declare namespace event {
         /**
          * <canvas> 中的触摸事件不可冒泡，所以没有 currentTarget。
          */
-        currentTarget: never
+        currentTarget: never;
     }
 
     /**
@@ -125,38 +125,38 @@ declare namespace event {
      */
     type Input = Custom<{
         /** 输入框内容 */
-        value: string
+        value: string;
         /** 光标位置 */
-        cursor: number
+        cursor: number;
         /** keyCode 为键值，`2.1.0` 起支持 */
-        keyCode?: number
-    }>
+        keyCode?: number;
+    }>;
 
     /**
      * 输入框聚焦时触发，event.detail = { value, height }
      */
     type InputFocus = Custom<{
         /** 输入框内容 */
-        value: string
+        value: string;
         /** 键盘高度, 在基础库 `1.9.90` 起支持 */
-        height?: number
-    }>
+        height?: number;
+    }>;
 
     /**
      * 输入框失去焦点时触发，event.detail = {value: value}
      */
     type InputBlur = Custom<{
         /** 输入框内容 */
-        value: string
-    }>
+        value: string;
+    }>;
 
     /**
      * 点击完成按钮时触发，event.detail = {value: value}
      */
     type InputConfirm = Custom<{
         /** 输入框内容 */
-        value: string
-    }>
+        value: string;
+    }>;
 
     /**
      * 键盘高度发生变化的时候触发此事件，event.detail = {height: height, duration: duration}
@@ -167,7 +167,7 @@ declare namespace event {
      */
     type InputKeyboardHeightChange = Custom<{
         /** 键盘高度 */
-        height: number
-        duration: number
-    }>
+        height: number;
+        duration: number;
+    }>;
 }
