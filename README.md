@@ -6,6 +6,8 @@
 * [x] `console` 类型定义(去除dom依赖)
 * [x] `wxs` 类型定义 
 * [x] `requirePlugin`
+* App
+    * [x] app 事件参数自动推断
 * Page
     * [x] this.setData() 无需感叹号，强类型验证
     * [x] this.route 无感叹号
