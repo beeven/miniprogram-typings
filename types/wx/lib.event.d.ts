@@ -163,6 +163,14 @@ declare namespace event {
     type ButtonLaunchApp = Custom<wx.GeneralCallbackResult>;
 
     /**
+     * checkbox-group 中选中项发生改变时触发 change 事件，detail = {value:['选中的checkbox的value的数组']}
+     */
+    type CheckboxGroupChange = Custom<{
+        /** 选中的checkbox的value的数组 */
+        value: string[];
+    }>;
+
+    /**
      * 键盘输入时触发，event.detail = {value, cursor, keyCode}，处理函数可以直接 return 一个字符串，将替换输入框的内容。
      */
     type Input = Custom<{
