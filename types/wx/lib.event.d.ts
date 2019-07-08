@@ -3,18 +3,16 @@
  */
 declare namespace event {
     interface Target {
-        /**
-         * 事件组件的id
-         */
+        /** 事件组件的id */
         id: string;
-        /**
-         * 当前组件的类型
-         */
-        tagName: string;
-        /**
-         * 事件组件上由data-开头的自定义属性组成的集合
-         */
+        /** 当前组件的类型 */
+        tagName?: string;
+        /** 事件组件上由data-开头的自定义属性组成的集合 */
         dataset: Record<string, any>;
+        /** 距离页面顶部的偏移量 */
+        offsetTop: number;
+        /** 距离页面左边的偏移量 */
+        offsetLeft: number;
     }
 
     /**
