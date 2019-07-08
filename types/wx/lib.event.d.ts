@@ -171,6 +171,66 @@ declare namespace event {
     }>;
 
     /**
+     * 编辑器初始化完成时触发
+     *
+     * 最低基础库: 2.7.0
+     */
+    type EditorReady = Custom<{}>;
+
+    /**
+     * 编辑器聚焦时触发，event.detail = {html, text, delta}
+     *
+     * 最低基础库: 2.7.0
+     */
+    type EditorFocus = Custom<{
+        html: string;
+        text: string;
+        delta: any[];
+    }>;
+
+    /**
+     * 编辑器失去焦点时触发，detail = {html, text, delta}
+     *
+     * 最低基础库: 2.7.0
+     */
+    type EditorBlur = EditorFocus;
+
+    /**
+     * 编辑器内容改变时触发，detail = {html, text, delta}
+     *
+     * 最低基础库: 2.7.0
+     */
+    type EditorInput = EditorFocus;
+
+    /**
+     * 通过 Context 方法改变编辑器内样式时触发，返回选区已设置的样式
+     *
+     * 最低基础库: 2.7.0
+     */
+    type EditorStatusChange = Custom<
+        Partial<{
+            align: 'left' | 'center' | 'right' | 'justify';
+            bold: 'strong';
+            italic: 'em';
+            underline: true;
+            strike: 'del';
+            lineHeight: string;
+            letterSpacing: string;
+            marginTop: string;
+            marginBottom: string;
+            fontFamily: string;
+            fontSize: string;
+            color: string;
+            backgroundColor: string;
+            list: 'checked' | 'unchecked' | 'ordered' | 'bullet';
+            indent: number;
+            header: number;
+            script: 'sub' | 'super';
+            direction: 'rtl';
+        }>
+    >;
+
+    /**
      * 键盘输入时触发，event.detail = {value, cursor, keyCode}，处理函数可以直接 return 一个字符串，将替换输入框的内容。
      */
     type Input = Custom<{
