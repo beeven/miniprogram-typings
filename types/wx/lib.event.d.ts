@@ -229,6 +229,23 @@ declare namespace event {
     >;
 
     /**
+     * 携带 form 中的数据触发 submit 事件，event.detail = {value : {'name': 'value'} , formId: ''}
+     */
+    type FormSubmit = Custom<{
+        formId?: unknown;
+        target: Target;
+        /** 表单中的数据，需要在表单组件中加上 name 来作为 key。 */
+        value: Record<string, any>;
+    }>;
+
+    /**
+     * 表单重置时会触发 reset 事件
+     */
+    type FormReset = Custom<{
+        target: Target;
+    }>;
+
+    /**
      * 键盘输入时触发，event.detail = {value, cursor, keyCode}，处理函数可以直接 return 一个字符串，将替换输入框的内容。
      */
     type Input = Custom<{
