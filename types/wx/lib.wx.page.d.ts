@@ -117,11 +117,16 @@ declare namespace Page {
     /** 到当前页面的路径，类型为`String`。最低基础库： `1.2.0` */
     route: string;
 
-  /** 返回当前页面的 custom-tab-bar 的组件实例
-   *
-   * 注意: 在基础库 < 2.5.0 时该方法可能会不存在, 需要先判断 getTabBar 方法是否存在 */
+    /** 返回当前页面的 custom-tab-bar 的组件实例
+     *
+     * 注意: 在基础库 < 2.5.0 时该方法可能会不存在, 需要先判断 getTabBar 方法是否存在 */
     getTabBar<TD = any, TM = any, TP = {}>(): WxComponent<TP, TD, TM> | null;
   }
+
+  /**
+   * 默认Onload参数类型
+   */
+  type OnLoadQuery = { [queryKey: string]: string | undefined };
 
   interface PageOptions<
     D extends IAnyObject = any,
@@ -143,7 +148,7 @@ declare namespace Page {
      */
     onLoad?(
       /** 打开当前页面路径中的参数 */
-      query?: { [queryKey: string]: string }
+      query: OnLoadQuery
     ): void;
     /** 生命周期回调—监听页面显示
      *
@@ -193,7 +198,7 @@ declare namespace Page {
      */
     onShareAppMessage?(
       /** 分享发起来源参数 */
-      options?: IShareAppMessageOption
+      options: IShareAppMessageOption
     ): ICustomShareContent;
     /** 页面滚动触发事件的处理函数
      *
@@ -201,24 +206,24 @@ declare namespace Page {
      */
     onPageScroll?(
       /** 页面滚动参数 */
-      options?: IPageScrollOption
+      options: IPageScrollOption
     ): void;
 
     /** 当前是 tab 页时，点击 tab 时触发，最低基础库： `1.9.0` */
     onTabItemTap?(
       /** tab 点击参数 */
-      options?: ITabItemTapOption
+      options: ITabItemTapOption
     ): void;
 
     /** 窗口尺寸改变时触发，最低基础库：`2.4.0` */
     onResize?(
       /** 窗口尺寸参数 */
-      options?: IResizeOption,
+      options: IResizeOption,
     ): void;
   }
 
   interface PageConstructor {
-    <D extends IAnyObject, T extends IAnyObject & PageOptions>(
+    <D extends IAnyObject, T extends IAnyObject>(
       options: PageOptions<D> & T & ThisType<PageInstance<D> & T>
     ): void;
   }
