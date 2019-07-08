@@ -121,6 +121,48 @@ declare namespace event {
     }
 
     /**
+     * 用户点击该按钮时，会返回获取到的用户信息，回调的detail数据与wx.getUserInfo返回的一致，open-type="getUserInfo"时有效
+     *
+     * 最低基础库: 1.3.0
+     */
+    type ButtonGetUserInfo = Custom<wx.GeneralCallbackResult & wx.GetUserInfoSuccessCallbackResult>;
+
+    /**
+     * 客服消息回调，open-type="contact"时有效
+     *
+     * 最低基础库: 1.5.0
+     */
+    type ButtonContact = Custom<wx.GeneralCallbackResult>;
+
+    /**
+     * 获取用户手机号回调，open-type=getPhoneNumber时有效
+     *
+     * 最低基础库: 1.2.0
+     */
+    type ButtonGetPhoneNumber = Custom<wx.GeneralCallbackResult & Partial<wx.GetWeRunDataSuccessCallbackResult>>;
+
+    /**
+     * 当使用开放能力时，发生错误的回调，open-type=launchApp时有效
+     *
+     * 最低基础库: 1.9.5
+     */
+    type ButtonError = Custom<wx.GeneralCallbackResult>;
+
+    /**
+     * 在打开授权设置页后回调，open-type=openSetting时有效
+     *
+     * 最低基础库: 2.0.7
+     */
+    type ButtonOpenSetting = Custom<wx.GeneralCallbackResult & wx.OpenSettingSuccessCallbackResult>;
+
+    /**
+     * 打开 APP 成功的回调，open-type=launchApp时有效
+     *
+     * 最低基础库: 2.4.4
+     */
+    type ButtonLaunchApp = Custom<wx.GeneralCallbackResult>;
+
+    /**
      * 键盘输入时触发，event.detail = {value, cursor, keyCode}，处理函数可以直接 return 一个字符串，将替换输入框的内容。
      */
     type Input = Custom<{
