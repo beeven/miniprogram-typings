@@ -593,4 +593,325 @@ declare namespace event {
      * 最低基础库: 2.0.7
      */
     type NavigatorComplete = Custom;
+
+    /**
+     * 当发生错误时触发 error 事件，detail = {errMsg:MediaError.code}
+     */
+    type AudioError = Custom<{
+        /**
+         * MediaError.code
+         *
+         * - 1 获取资源被用户禁止
+         * - 2 网络错误
+         * - 3 解码错误
+         * - 4 不合适资源
+         */
+        errMsg: 1 | 2 | 3 | 4;
+    }>;
+
+    /**
+     * 当开始/继续播放时触发play事件
+     */
+    type AudioPlay = Custom<{}>;
+
+    /**
+     * 当暂停播放时触发 pause 事件
+     */
+    type AudioPause = Custom<{}>;
+
+    /**
+     * 当播放进度改变时触发 timeupdate 事件，detail = {currentTime, duration}
+     */
+    type AudioTimeUpdate = Custom<{
+        currentTime: number;
+        duration: number;
+    }>;
+
+    /**
+     * 当播放到末尾时触发 ended 事件
+     */
+    type AudioEnded = Custom<{}>;
+
+    /**
+     * 摄像头在非正常终止时触发，如退出后台等情况
+     */
+    type CameraStop = Custom;
+
+    /**
+     * 用户不允许使用摄像头时触发
+     */
+    type CameraError = Custom;
+
+    /**
+     * 相机初始化完成时触发
+     *
+     * 最低基础库: 2.7.0
+     */
+    type CameraInitDone = Custom;
+
+    /**
+     * 在扫码识别成功时触发，仅在 mode="scanCode" 时生效
+     *
+     * 最低基础库: 2.1.0
+     */
+    type CameraScanCode = Custom;
+
+    /**
+     * 当错误发生时触发，event.detail = {errMsg}
+     */
+    type ImageError = CoverImageError;
+    /**
+     * 当图片载入完毕时触发，event.detail = {height, width}
+     */
+    type ImageLoad = CoverImageLoad;
+
+    /**
+     * 播放状态变化事件，detail = {code}
+     *
+     * 最低基础库 1.7.0
+     */
+    type LivePlayerStateChange = Custom<{
+        /**
+         * 状态码
+         *
+         * - `2001` 已经连接服务器
+         * - `2002` 已经连接服务器,开始拉流
+         * - `2003` 网络接收到首个视频数据包(IDR)
+         * - `2004` 视频播放开始
+         * - `2005` 视频播放进度
+         * - `2006` 视频播放结束
+         * - `2007` 视频播放Loading
+         * - `2008` 解码器启动
+         * - `2009` 视频分辨率改变
+         * - `-2301` 网络断连，且经多次重连抢救无效，更多重试请自行重启播放
+         * - `-2302` 获取加速拉流地址失败
+         * - `2101` 当前视频帧解码失败
+         * - `2102` 当前音频帧解码失败
+         * - `2103` 网络断连, 已启动自动重连
+         * - `2104` 网络来包不稳：可能是下行带宽不足，或由于主播端出流不均匀
+         * - `2105` 当前视频播放出现卡顿
+         * - `2106` 硬解启动失败，采用软解
+         * - `2107` 当前视频帧不连续，可能丢帧
+         * - `2108` 当前流硬解第一个I帧失败，SDK自动切软解
+         * - `3001` RTMP -DNS解析失败
+         * - `3002` RTMP服务器连接失败
+         * - `3003` RTMP服务器握手失败
+         * - `3005` RTMP 读/写失败
+         */
+        code: number;
+    }>;
+
+    /**
+     * 全屏变化事件，detail = {direction, fullScreen}
+     *
+     * 最低基础库 1.7.0
+     */
+    type LivePlayerFullScreenChange = Custom<{
+        direction: 'vertical' | 'horizontal';
+        fullScreen: boolean;
+    }>;
+
+    /**
+     * 网络状态通知，detail = {info}
+     *
+     * 最低基础库 1.9.0
+     */
+    type LivePlayerNetStatus = Custom<{
+        /**
+         * 网络状态数据
+         *
+         *
+         * - `videoBitrate` 当前视频编/码器输出的比特率，单位 kbps
+         * - `audioBitrate` 当前音频编/码器输出的比特率，单位 kbps
+         * - `videoFPS` 当前视频帧率
+         * - `videoGOP` 当前视频 GOP,也就是每两个关键帧(I帧)间隔时长，单位 s
+         * - `netSpeed` 当前的发送/接收速度
+         * - `netJitter` 网络抖动情况，抖动越大，网络越不稳定
+         * - `videoWidth` 视频画面的宽度
+         * - `videoHeight` 视频画面的高度
+         */
+        info:
+            | 'videoBitrate'
+            | 'audioBitrate'
+            | 'videoFPS'
+            | 'videoGOP'
+            | 'netSpeed'
+            | 'netJitter'
+            | 'videoWidth'
+            | 'videoHeight';
+    }>;
+
+    /**
+     * 状态变化事件，detail = {code}
+     *
+     * 最低基础库: 1.7.0
+     */
+    type LivePusherStateChange = Custom<{
+        /**
+         * 状态码
+         *
+         * - `1001` 已经连接推流服务器
+         * - `1002` 已经与服务器握手完毕,开始推流
+         * - `1003` 打开摄像头成功
+         * - `1004` 录屏启动成功
+         * - `1005` 推流动态调整分辨率
+         * - `1006` 推流动态调整码率
+         * - `1007` 首帧画面采集完成
+         * - `1008` 编码器启动
+         * - `-1301` 打开摄像头失败
+         * - `-1302` 打开麦克风失败
+         * - `-1303` 视频编码失败
+         * - `-1304` 音频编码失败
+         * - `-1305` 不支持的视频分辨率
+         * - `-1306` 不支持的音频采样率
+         * - `-1307` 网络断连，且经多次重连抢救无效，更多重试请自行重启推流
+         * - `-1308` 开始录屏失败，可能是被用户拒绝
+         * - `-1309` 录屏失败，不支持的Android系统版本，需要5.0以上的系统
+         * - `-1310` 录屏被其他应用打断了
+         * - `-1311` Android Mic打开成功，但是录不到音频数据
+         * - `-1312` 录屏动态切横竖屏失败
+         * - `1101` 网络状况不佳：上行带宽太小，上传数据受阻
+         * - `1102` 网络断连, 已启动自动重连
+         * - `1103` 硬编码启动失败,采用软编码
+         * - `1104` 视频编码失败
+         * - `1105` 新美颜软编码启动失败，采用老的软编码
+         * - `1106` 新美颜软编码启动失败，采用老的软编码
+         * - `3001` RTMP -DNS解析失败
+         * - `3002` RTMP服务器连接失败
+         * - `3003` RTMP服务器握手失败
+         * - `3004` RTMP服务器主动断开，请检查推流地址的合法性或防盗链有效期
+         * - `3005` RTMP 读/写失败
+         */
+        code: number;
+    }>;
+
+    /**
+     * 网络状态通知，detail = {info}
+     *
+     * 最低基础库: 1.9.0
+     */
+    type LivePusherNetStatus = Custom<{
+        /**
+         * 网络状态数据
+         *
+         * -`videoBitrate` 当前视频编/码器输出的比特率，单位 kbps
+         * -`audioBitrate` 当前音频编/码器输出的比特率，单位 kbps
+         * -`videoFPS` 当前视频帧率
+         * -`videoGOP` 当前视频 GOP,也就是每两个关键帧(I帧)间隔时长，单位 s
+         * -`netSpeed` 当前的发送/接收速度
+         * -`netJitter` 网络抖动情况，抖动越大，网络越不稳定
+         * -`videoWidth` 视频画面的宽度
+         * -`videoHeight` 视频画面的高度
+         */
+        info:
+            | 'videoBitrate'
+            | 'audioBitrate'
+            | 'videoFPS'
+            | 'videoGOP'
+            | 'netSpeed'
+            | 'netJitter'
+            | 'videoWidth'
+            | 'videoHeight';
+    }>;
+
+    /**
+     * 渲染错误事件，detail = {errMsg, errCode}
+     *
+     * `tip`：开发者工具上暂不支持 live-pusher
+     *
+     * 最低基础库: 1.7.4
+     */
+    type LivePusherError = Custom<{
+        errMsg: string;
+        /**
+         * 错误码
+         *
+         * - `10001` 用户禁止使用摄像头
+         * - `10002` 用户禁止使用录音
+         * - `10003` 背景音资源（BGM）加载失败
+         * - `10004` 等待画面资源（waiting-image）加载失败
+         */
+        errCode: number;
+    }>;
+
+    /**
+     * 背景音开始播放时触发
+     *
+     * 最低基础库: 2.4.0
+     */
+    type LivePusherBgmStart = Custom<{}>;
+
+    /**
+     * 背景音进度变化时触发，detail = {progress, duration}
+     *
+     * 最低基础库: 2.4.0
+     */
+    type LivePusherBgmProgress = Custom<{
+        progress: number;
+        duration: number;
+    }>;
+
+    /**
+     * 背景音播放完成时触发
+     *
+     * 最低基础库: 2.4.0
+     */
+    type LivePusherBgmComplete = Custom<{}>;
+
+    /**
+     * 当开始/继续播放时触发play事件
+     */
+    type VideoPlay = Custom<{}>;
+
+    /**
+     * 当暂停播放时触发 pause 事件
+     */
+    type VideoPause = Custom<{}>;
+
+    /**
+     * 当播放到末尾时触发 ended 事件
+     */
+    type VideoEnded = Custom<{}>;
+
+    /**
+     * 播放进度变化时触发，event.detail = {currentTime, duration} 。触发频率 250ms 一次
+     */
+    type VideoTimeUpdate = Custom<{
+        currentTime: number;
+        duration: number;
+    }>;
+
+    /**
+     * 视频进入和退出全屏时触发，event.detail = {fullScreen, direction}
+     *
+     * 最低基础库: 1.4.0
+     */
+    type VideoFullScreenChange = Custom<{
+        fullScreen: boolean;
+        direction: 'vertical' | 'horizontal';
+    }>;
+
+    /**
+     * 视频出现缓冲时触发
+     *
+     * 最低基础库: 1.7.0
+     */
+    type VideoWaiting = Custom<{}>;
+
+    /**
+     * 视频播放出错时触发
+     *
+     * 最低基础库: 1.7.0
+     */
+    type VideoError = Custom<{}>;
+
+    /**
+     * 加载进度变化时触发，只支持一段加载。
+     *
+     * 最低基础库: 2.4.0
+     */
+    type VideoPregress = Custom<{
+        /** 百分比 */
+        buffered: number;
+    }>;
 }
