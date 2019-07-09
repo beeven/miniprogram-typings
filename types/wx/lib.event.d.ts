@@ -119,6 +119,122 @@ declare namespace event {
     }
 
     /**
+     * 拖动过程中触发的事件，event.detail = {x, y, source}
+     *
+     * 最低基础库: 1.9.90
+     */
+    type MovableViewChange = Custom<{
+        x: number;
+        y: number;
+        /**
+         * 产生移动的原因
+         *
+         * - `touch` 拖动
+         * - `touch-out-of-bounds` 超出移动范围
+         * - `out-of-bounds` 超出移动范围后的回弹
+         * - `friction` 惯性
+         * - `空字符串` setData
+         */
+        source: 'touch' | 'touch-out-of-bounds' | 'out-of-bounds' | 'friction' | '';
+    }>;
+
+    /**
+     * 缩放过程中触发的事件，event.detail = {x, y, scale}，x 和 y 字段在2.1.0之后支持
+     *
+     * 最低基础库: 1.9.90
+     */
+    type MovableViewScale = Custom<{
+        /** 最低基础库: 2.1.0 */
+        x: number;
+        /** 最低基础库: 2.1.0 */
+        y: number;
+        scale: number;
+    }>;
+
+    /**
+     * 图片加载成功时触发
+     *
+     * 最低基础库: 2.1.0
+     */
+    type CoverImageLoad = Custom<{
+        /** 图片宽度 */
+        width: number;
+        /** 图片高度 */
+        height: number;
+    }>;
+
+    /**
+     * 图片加载失败时触发
+     *
+     * 最低基础库: 2.1.0
+     */
+    type CoverImageError = Custom<wx.GeneralCallbackResult>;
+
+    /**
+     * 滚动到顶部/左边时触发
+     */
+    type ScrollToUpper = Custom<{
+        direction: 'top' | 'left';
+    }>;
+
+    /**
+     * 滚动到底部/右边时触发
+     */
+    type ScrollToLower = Custom<{
+        direction: 'bottom' | 'right';
+    }>;
+
+    /**
+     * 滚动时触发，event.detail = {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY}
+     */
+    type ScrollView = Custom<{
+        scrollLeft: number;
+        scrollTop: number;
+        scrollHeight: number;
+        scrollWidth: number;
+        deltaX: number;
+        deltaY: number;
+    }>;
+
+    /**
+     * current 改变时会触发 change 事件，event.detail = {current, source}
+     *
+     * `tip`: 如果在 bindchange 的事件回调函数中使用 setData 改变 current 值，则有可能导致 setData 被不停地调用，因而通常情况下请在改变 current 值前检测 source 字段来判断是否是由于用户触摸引起。
+     */
+    type SwiperChange = Custom<{
+        current: number;
+        /**
+         * 表示导致变更的原因
+         *
+         * - `autoplay` 自动播放导致swiper变化；
+         * - `touch` 用户划动引起swiper变化；
+         * - 其它原因将用空字符串表示。
+         *
+         * 最低基础库: 1.4.0
+         */
+        source: '' | 'autoplay' | 'touch';
+        /** 该 swiper-item 的标识符 */
+        currentItemId: string;
+    }>;
+
+    /**
+     * swiper-item 的位置发生改变时会触发 transition 事件，event.detail = {dx: dx, dy: dy}
+     *
+     * 最低基础库: 2.4.3
+     */
+    type SwiperTransition = Custom<{
+        dx: number;
+        dy: number;
+    }>;
+
+    /**
+     * 动画结束时会触发 animationfinish 事件
+     *
+     * 最低基础库: 1.9.0
+     */
+    type SwiperAnimationFinish = SwiperChange;
+
+    /**
      * 用户点击该按钮时，会返回获取到的用户信息，回调的detail数据与wx.getUserInfo返回的一致，open-type="getUserInfo"时有效
      *
      * 最低基础库: 1.3.0
