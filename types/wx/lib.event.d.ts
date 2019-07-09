@@ -253,7 +253,7 @@ declare namespace event {
         value: string;
         /** 光标位置 */
         cursor: number;
-        /** keyCode 为键值，`2.1.0` 起支持 */
+        /** keyCode 为键值 (目前工具还不支持返回keyCode参数) `2.1.0` 起支持 */
         keyCode?: number;
     }>;
 
@@ -295,4 +295,142 @@ declare namespace event {
         height: number;
         duration: number;
     }>;
+
+    /**
+     * 取消选择时触发
+     *
+     * 最低基础库: 1.9.90
+     */
+    type PickerCancel = Custom<{}>;
+
+    /**
+     * value 改变时触发 change 事件，event.detail = {value}
+     *
+     * 当 mode = region 时 (最低基础库: 1.4.0)
+     *
+     * value 改变时触发 change 事件，event.detail = {value, code, postcode}，其中字段 code 是统计用区划代码，postcode 是邮政编码
+     */
+    type PickerChange = Custom<{
+        /**
+         * 当 mode = selector 时, 返回当前选择的 value
+         *
+         * 当 mode = multiSelector 时, 返回一个索引数组
+         *
+         * 当 mode = time | date 时, 返回 `"12:01"` | `"2016-09-01"`
+         *
+         * 当 mode = region 时, 返回 `["广东省", "广州市", "海珠区"]`
+         */
+        value: string | number[] | [string, string, string];
+        /** 统计用区划代码 当 mode = region 时有效 (最低基础库: 1.4.0) */
+        code: [string, string, string];
+        /** 邮政编码 当 mode = region 时有效 (最低基础库: 1.4.0) */
+        postcode: string;
+    }>;
+
+    /**
+     * 列改变时触发 当 mode = multiSelector 时有效
+     */
+    type PickerColumnChange = Custom<{
+        /** 修改的列 */
+        column: number;
+        value: number;
+    }>;
+
+    /**
+     * 滚动选择时触发change事件，event.detail = {value}
+     */
+    type PickerViewChange = Custom<{
+        /** value为数组，表示 picker-view 内的 picker-view-column 当前选择的是第几项（下标从 0 开始） */
+        value: number[];
+    }>;
+
+    /**
+     * 当滚动选择开始时候触发事件
+     *
+     * 最低基础库: 2.3.1
+     */
+    type PickerViewPickStart = Custom<{}>;
+
+    /**
+     * 当滚动选择结束时候触发事件
+     *
+     * 最低基础库: 2.3.1
+     */
+    type PickerViewPickEnd = Custom<{}>;
+
+    /**
+     * radio-group 中选中项的 value
+     */
+    type RadioGroupChange = Custom<{
+        value: string;
+    }>;
+
+    /**
+     * 完成一次拖动后触发的事件，event.detail = {value}
+     */
+    type SliderChange = Custom<{
+        /** slider 的数值 0-100 */
+        value: number;
+    }>;
+
+    /**
+     * 拖动过程中触发的事件，event.detail = {value}
+     *
+     * 最低基础库: 1.7.0
+     */
+    type SliderChanging = SliderChange;
+
+    /**
+     * checked 改变时触发 change 事件，event.detail={ value}
+     */
+    type SwitchChange = Custom<{
+        value: boolean;
+    }>;
+
+    /**
+     * 输入框聚焦时触发，event.detail = { value, height }，height 为键盘高度，在基础库 1.9.90 起支持
+     */
+    type TextareaFocus = InputFocus;
+
+    /**
+     * 输入框失去焦点时触发，event.detail = {value, cursor}
+     *
+     * `tip`: textarea 的 blur 事件会晚于页面上的 tap 事件，如果需要在 button 的点击事件获取 textarea，可以使用 form 的 bindsubmit。
+     */
+    type TextareaBlur = InputBlur;
+
+    /**
+     * 输入框行数变化时调用，event.detail = {height: 0, heightRpx: 0, lineCount: 0}
+     */
+    type TextareaLineChange = Custom<{
+        /** 输入框高度(px) */
+        height: number;
+        /** 输入框高度(rpx) */
+        heightRpx: number;
+        /** 行数 */
+        lineCount: number;
+        /** 行高 */
+        lineHeight: number;
+    }>;
+
+    /**
+     * 当键盘输入时，触发 input 事件，event.detail = {value, cursor, keyCode}，keyCode 为键值，目前工具还不支持返回keyCode参数。
+     *
+     * `tip`: 不建议在多行文本上对用户的输入进行修改，所以 **bindinput 处理函数的返回值并不会反映到 textarea 上**
+     */
+    type TextareaInput = Input;
+
+    /**
+     * 点击完成时， 触发 confirm 事件，event.detail = {value: value}
+     */
+    type TextareaConfirm = InputConfirm;
+
+    /**
+     * 键盘高度发生变化的时候触发此事件，event.detail = {height: height, duration: duration}
+     *
+     * `tip`: 键盘高度发生变化，keyboardheightchange事件可能会多次触发，开发者对于相同的height值应该忽略掉
+     *
+     * 最低基础库: 2.7.0
+     */
+    type TextareaKeyboardHeightChange = InputKeyboardHeightChange;
 }
