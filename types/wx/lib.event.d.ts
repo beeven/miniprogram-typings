@@ -235,6 +235,15 @@ declare namespace event {
     type SwiperAnimationFinish = SwiperChange;
 
     /**
+     * 动画完成事件
+     *
+     * 最低基础库 2.4.1
+     */
+    type ProgressActiveEnd = Custom<{
+        curPercent: number;
+    }>;
+
+    /**
      * 用户点击该按钮时，会返回获取到的用户信息，回调的detail数据与wx.getUserInfo返回的一致，open-type="getUserInfo"时有效
      *
      * 最低基础库: 1.3.0
@@ -549,4 +558,39 @@ declare namespace event {
      * 最低基础库: 2.7.0
      */
     type TextareaKeyboardHeightChange = InputKeyboardHeightChange;
+
+    /**
+     * 功能页返回，且操作成功时触发， detail 格式与具体功能页相关
+     *
+     * 最低基础库: 2.1.0
+     */
+    type FunctionalNavigatorSuccess = Custom;
+
+    /**
+     * 功能页返回，且操作失败时触发， detail 格式与具体功能页相关
+     *
+     * 最低基础库: 2.1.0
+     */
+    type FunctionalNavigatorFail = Custom;
+
+    /**
+     * 当target="miniProgram"时有效，跳转小程序成功
+     *
+     * 最低基础库: 2.0.7
+     */
+    type NavigatorSuccess = Custom;
+    /**
+     * 当target="miniProgram"时有效，跳转小程序失败
+     *
+     * `tips`: 需要用户确认跳转 从 2.3.0 版本开始，在跳转至其他小程序前，将统一增加弹窗，询问是否跳转，用户确认后才可以跳转其他小程序。如果用户点击取消，则回调 fail cancel。
+     *
+     * 最低基础库: 2.0.7
+     */
+    type NavigatorFail = Custom;
+    /**
+     * 当target="miniProgram"时有效，跳转小程序完成
+     *
+     * 最低基础库: 2.0.7
+     */
+    type NavigatorComplete = Custom;
 }
