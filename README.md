@@ -21,6 +21,7 @@
     * [x] lifetimes/pageLifetimes/relations/methods 完整this绑定(支持data/properties/methods调用)
     * [x] setData 强类型校验和自动提示
     * [x] this.getTabBar() 支持类型安全检查、泛型参数
+* Behavior (beta)
 Fixed 修复官方的错误定义
 * [x] fix wx.AuthSetting 类型错误
 * [x] fix chooseimage
