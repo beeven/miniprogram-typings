@@ -59,6 +59,7 @@ Component({
     lifetimes:{
         ready(){
             this.ext=1
+            
         }
     },
     methods:{

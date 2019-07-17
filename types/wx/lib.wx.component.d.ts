@@ -196,7 +196,7 @@ interface BaseComponet<TProp, TData, TMethod extends Record<string, Function>, T
    */
   pageLifetimes?: PageLifetimes & ThisComponent<TProp, TData, TMethod, TExt>;
 
-  behaviors?: string[],
+  behaviors?: (string|WxBehavior<any,any,any>)[],
   /**
    * 定义段过滤器，用于自定义组件扩展，参见 [自定义组件扩展](extend.md)
    *
