@@ -3283,17 +3283,17 @@ innerAudioContext.onError((res) => {
   }
   interface RequestSuccessCallbackResult {
     /** 开发者服务器返回的数据 */
-    data: string | object | ArrayBuffer;
+    data: any;
     /** 开发者服务器返回的 HTTP Response Header
      *
      * 最低基础库： `1.2.0` */
-    header: object;
+    header: any;
     /** 开发者服务器返回的 HTTP 状态码 */
     statusCode: number;
   }
   interface RequestTaskOnHeadersReceivedCallbackResult {
     /** 开发者服务器返回的 HTTP Response Header */
-    header: object;
+    header: any;
   }
   interface Result {
     /** x 轴的角速度 */
@@ -3308,7 +3308,7 @@ innerAudioContext.onError((res) => {
     /** 来源小程序、公众号或 App 的 appId */
     appId: string;
     /** 来源小程序传过来的数据，scene=1037或1038时支持 */
-    extraData: object;
+    extraData: any;
   }
   interface ResumeBGMOption {
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
@@ -3446,7 +3446,7 @@ innerAudioContext.onError((res) => {
   }
   interface ScrollOffsetCallbackResult {
     /** 节点的 dataset */
-    dataset: object;
+    dataset: any;
     /** 节点的 ID */
     id: string;
     /** 节点的水平滚动位置 */
@@ -3666,7 +3666,7 @@ innerAudioContext.onError((res) => {
   }
   interface SetTopBarTextOption {
     /** 置顶栏文字 */
-    text: object;
+    text: any;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     complete?: SetTopBarTextCompleteCallback;
     /** 接口调用失败的回调函数 */
@@ -4019,7 +4019,7 @@ innerAudioContext.onError((res) => {
     /** [Stats]|Object
      *
      * 当 recursive 为 false 时，res.stats 是一个 Stats 对象。当 recursive 为 true 且 path 是一个目录的路径时，res.stats 是一个 Object，key 以 path 为根路径的相对路径，value 是该路径对应的 Stats 对象。 */
-    stats: Stats | object;
+    stats: Stats | any;
   }
   /** 描述文件状态的对象 */
   interface Stats {
@@ -4352,7 +4352,7 @@ innerAudioContext.onError((res) => {
   }
   interface UploadTaskOnHeadersReceivedCallbackResult {
     /** 开发者服务器返回的 HTTP Response Header */
-    header: object;
+    header: any;
   }
   interface UploadTaskOnProgressUpdateCallbackResult {
     /** 上传进度百分比 */
@@ -4438,7 +4438,7 @@ innerAudioContext.onError((res) => {
   }
   interface WorkerOnMessageCallbackResult {
     /** 主线程/Worker 线程向当前线程发送的消息 */
-    message: object;
+    message: any;
   }
   interface WriteBLECharacteristicValueOption {
     /** 蓝牙特征值的 uuid */
@@ -4581,7 +4581,7 @@ innerAudioContext.onError((res) => {
     /** [Array.<Object> Animation.export()](Animation.export.md)
      *
      * 导出动画队列。**export 方法每次调用后会清掉之前的动画操作。** */
-    export(): Array<object>;
+    export(): Array<any>;
     /** [[Animation](https://developers.weixin.qq.com/miniprogram/dev/api/ui/animation/Animation.html) Animation.backgroundColor(string value)](Animation.backgroundColor.md)
 
      *
