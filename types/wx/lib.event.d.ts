@@ -262,7 +262,7 @@ declare namespace event {
      *
      * 最低基础库: 1.2.0
      */
-    type ButtonGetPhoneNumber = Custom<wx.GeneralCallbackResult & Partial<wx.GetWeRunDataSuccessCallbackResult>>;
+    type ButtonGetPhoneNumber = Custom<wx.GeneralCallbackResult & Partial<wx.GetPhoneNumberCallbackResult>>;
 
     /**
      * 当使用开放能力时，发生错误的回调，open-type=launchApp时有效

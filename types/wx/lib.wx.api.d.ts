@@ -1311,7 +1311,7 @@ backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb
   }
   interface DownloadTaskOnHeadersReceivedCallbackResult {
     /** 开发者服务器返回的 HTTP Response Header */
-    header: object;
+    header: any;
   }
   interface DownloadTaskOnProgressUpdateCallbackResult {
     /** 下载进度百分比 */
@@ -2717,7 +2717,7 @@ innerAudioContext.onError((res) => {
     /** 连接成功的 HTTP 响应 Header
      *
      * 最低基础库： `2.0.0` */
-    header: object;
+    header: any;
   }
   interface OnPageNotFoundCallbackResult {
     /** 是否本次启动的首个页面（例如从分享等入口进来，首个页面是开发者配置的分享页面） */
@@ -2725,7 +2725,7 @@ innerAudioContext.onError((res) => {
     /** 不存在页面的路径 */
     path: string;
     /** 打开不存在页面的 query 参数 */
-    query: object;
+    query: any;
   }
   interface OnSocketMessageCallbackResult {
     /** 服务器返回的消息 */
@@ -2735,7 +2735,7 @@ innerAudioContext.onError((res) => {
     /** 连接成功的 HTTP 响应 Header
      *
      * 最低基础库： `2.0.0` */
-    header: object;
+    header: any;
   }
   interface OnStopCallbackResult {
     /** 录音文件的临时路径 */
