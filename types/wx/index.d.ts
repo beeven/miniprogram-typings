@@ -18,6 +18,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 /// <reference path="./lib.event.d.ts" />
 /// <reference path="./lib.wx.component.d.ts" />
 /// <reference path="./lib.wx.behavior.d.ts" />
+/// <reference path="./lib.wx.cloud.d.ts" />
 
 
 type IAnyObject = Record<string, any>;
@@ -32,3 +33,7 @@ type PartialOptional<T, K extends keyof T> = Partial<Pick<T, K>> &
 * Exclude undefined from T
 */
 type NonUndefined<T> = T extends undefined ? never : T;
+
+type Optional<T> = {
+  [K in keyof T]+?: T[K]
+}
