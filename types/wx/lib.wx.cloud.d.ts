@@ -228,6 +228,8 @@ declare namespace wx {
       deleteFile(param: RQ<ICloud.DeleteFileParam>): Promise<ICloud.DeleteFileResult>
 
       database: (config?: ICloudConfig) => DB.Database,
+
+      cloudID(cloudID: string): object;
     }
   }
 }

@@ -2122,6 +2122,13 @@ backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb
     /** 加密算法的初始向量，详细见[加密数据解密算法] */
     iv: string;
   }
+  interface GetPhoneNumberCallbackResult {
+    /** 包括敏感数据在内的完整用户信息的加密数据，详细见[加密数据解密算法]。解密后得到的数据结构见后文 */
+    encryptedData: string;
+    /** 加密算法的初始向量，详细见[加密数据解密算法] */
+    iv: string;
+    cloudID?: string;
+  }
   interface GetWifiListOption {
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     complete?: GetWifiListCompleteCallback;
