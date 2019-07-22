@@ -21,3 +21,12 @@ getApp();
 
 // $ExpectType any
 getCurrentPages()[0].data;
+
+
+wx.navigateTo({
+  url:"test?",
+  events: {
+    ab: function(data) {},
+    abc: function(data) {}
+  }
+})

@@ -2521,7 +2521,7 @@ innerAudioContext.onError((res) => {
      * - 'release': 正式版; */
     envVersion?: 'develop' | 'trial' | 'release';
     /** 需要传递给目标小程序的数据，目标小程序可在 `App.onLaunch`，`App.onShow` 中获取到这份数据。如果跳转的是小游戏，可以在 `wx.onShow`、`wx.getLaunchOptionsSync` 中可以获取到这份数据数据。 */
-    extraData?: object;
+    extraData?: any;
     /** 接口调用失败的回调函数 */
     fail?: NavigateToMiniProgramFailCallback;
     /** 打开的页面路径，如果为空则打开首页。path 中 ? 后面的部分会成为 query，在小程序的 `App.onLaunch`、`App.onShow` 和 `Page.onLoad` 的回调函数或小游戏的 `wx.onShow` 回调函数、`wx.getLaunchOptionsSync` 中可以获取到 query 数据。对于小游戏，可以只传入 query 部分，来实现传参效果，如：传入 "?foo=bar"。 */
@@ -2529,9 +2529,13 @@ innerAudioContext.onError((res) => {
     /** 接口调用成功的回调函数 */
     success?: NavigateToMiniProgramSuccessCallback;
   }
+
+  type NavigateToEventHandler = (data: any) => void;
+
   interface NavigateToOption {
     /** 需要跳转的应用内非 tabBar 的页面的路径, 路径后可以带参数。参数与路径之间使用 `?` 分隔，参数键与参数值用 `=` 相连，不同参数用 `&` 分隔；如 'path?key=value&key2=value2' */
     url: string;
+    events?: Record<string, NavigateToEventHandler>;
     /** 接口调用结束的回调函数（调用成功、失败都会执行） */
     complete?: NavigateToCompleteCallback;
     /** 接口调用失败的回调函数 */
