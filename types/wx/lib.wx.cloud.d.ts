@@ -229,7 +229,7 @@ declare namespace wx {
 
       database: (config?: ICloudConfig) => DB.Database,
 
-      cloudID(cloudID: string): object;
+      CloudID(cloudID: string): object;
     }
   }
 }
