@@ -12178,7 +12178,39 @@ wx.writeBLECharacteristicValue({
     res: GeneralCallbackResult,
   ) => void;
   /** 接口调用成功的回调函数 */
-  type NavigateToSuccessCallback = (res: GeneralCallbackResult) => void;
+  type NavigateToSuccessCallback = (res: NavigateToSuccessCallbackResult) => void;
+
+  type NavigateToSuccessCallbackResult = {
+    eventChannel: EventChannel;
+  };
+  /** 页面间事件通信通道 */
+  type EventChannel = {
+    /** 触发一个事件 */
+    emit: (
+      /** 事件名称 */
+      eventName: string,
+      /** 事件参数 */
+      args: any) => void;
+    /** 持续监听一个事件 */
+    on: (
+      /** 事件名称 */
+      eventName: string,
+      /** 事件监听函数 */
+      callback: (args: any) => void) => void;
+    /** 监听一个事件一次，触发后失效 */
+    once: (
+      /** 事件名称 */
+      eventName: string, 
+      /** 事件监听函数 */
+      callback: (args: any) => void) => void;
+    /** 取消监听一个事件。给出第二个参数时，只取消给出的监听函数，否则取消所有监听函数 */
+    off: (
+      /** 事件名称 */
+      eventName: string, 
+      /** 事件监听函数 */
+      callback?: (args: any) => void) => void;
+  };
+
   /** 接口调用结束的回调函数（调用成功、失败都会执行） */
   type NotifyBLECharacteristicValueChangeCompleteCallback = (
     res: GeneralCallbackResult,
@@ -13246,4 +13278,4 @@ declare function /** [number setTimeout(function callback, number delay, any res
 /**
  * 导入插件
  */
-declare function requirePlugin<T=any>(packageName:string):T;
+declare function requirePlugin<T = any>(packageName: string): T;

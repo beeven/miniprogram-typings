@@ -121,6 +121,9 @@ declare namespace Page {
      *
      * 注意: 在基础库 < 2.5.0 时该方法可能会不存在, 需要先判断 getTabBar 方法是否存在 */
     getTabBar<TD = any, TM = any, TP = {}>(): WxComponent<TP, TD, TM> | null;
+
+    /** 返回当前页面间事件通信通道  */
+    getOpenerEventChannel(): wx.EventChannel;
   }
 
   /**
